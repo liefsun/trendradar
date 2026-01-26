@@ -171,148 +171,233 @@
 [WORD_GROUPS]
 
   # ═══════════════════════════════════════════════════════════════
-  # Layer A — 时事与宏观（这部分效果很好，保持）
+  # Layer A — 时事与宏观
   # ═══════════════════════════════════════════════════════════════
 
   [时事-国际热点]
+  # 中文
   /战争|冲突|停火|制裁|军演|导弹|袭击|入侵|撤军|谈判/ => 冲突
   /乌克兰|俄罗斯|以色列|加沙|伊朗|叙利亚|朝鲜|台海|南海/ => 热点地区
-  /普京|泽连斯基|拜登|特朗普|内塔尼亚胡|哈马斯|胡塞|北约|NATO/ => 关键词
-  @35
+  /普京|泽连斯基|拜登|特朗普|内塔尼亚胡|哈马斯|胡塞|北约/ => 关键人物
+  # 英文
+  /Ukraine|Russia|Israel|Gaza|Iran|Syria|NATO|missile|sanction|ceasefire/ => Geopolitics
+  /Putin|Zelensky|Biden|Trump|Netanyahu|Hamas|Houthi/ => Key Figures
+  @40
 
   [时事-中国政策]
+  # 中文
   /国务院|发改委|央行|财政部|政治局|两会|总书记|习近平/ => 高层
   /政策|改革|监管|整顿|约谈|罚款|反垄断|合规/ => 政策
   /房价|房地产|楼市|土地|地方债|城投/ => 经济
+  # 英文
+  /China policy|Beijing|PBoC|NDRC|Xi Jinping|CCP|Chinese government/ => China
   @25
 
   [时事-英美欧]
+  # 中文
   /英国|伦敦|英镑|脱欧|议会|首相|苏纳克|斯塔默/ => 英国
   /美国|白宫|国会|美联储|拜登|特朗普|美元|关税/ => 美国
   /欧洲|欧盟|欧央行|德国|法国/ => 欧洲
-  @30
+  # 英文
+  /\bUK\b|Britain|London|Parliament|Prime Minister|Starmer|Sunak|BoE|Sterling/ => UK
+  /\bUS\b|United States|White House|Congress|Federal Reserve|tariff/ => US
+  /\bEU\b|European|ECB|Brussels|Germany|France/ => EU
+  @35
 
   [宏观-央行与市场]
+  # 中文
   /加息|降息|利率|通胀|CPI|PMI|GDP|失业率/ => 宏观数据
-  /美联储|Fed|鲍威尔|央行|货币政策|QE|QT|流动性/ => 央行
+  /美联储|央行|货币政策|QE|QT|流动性|鲍威尔/ => 央行
   /美股|A股|港股|纳斯达克|标普|道琼斯|恒生|上证/ => 股市
   /美债|国债|收益率|人民币|黄金|原油|白银/ => 资产
-  @30
+  # 英文
+  /\bFed\b|FOMC|Powell|interest rate|rate hike|rate cut|inflation|CPI|GDP|unemployment/ => Macro
+  /Treasury|yields|bonds|dollar|DXY|\bGBP\b|forex/ => Rates
+  /gold|silver|oil|crude|Brent|WTI|commodity/ => Commodities
+  /S&P 500|Nasdaq|Dow Jones|stock market|equities/ => Markets
+  @35
   !化工
   !医药
   !食品
 
   # ═══════════════════════════════════════════════════════════════
-  # Layer B — Crypto（修复误匹配）
+  # Layer B — Crypto
   # ═══════════════════════════════════════════════════════════════
 
   [Crypto-综合]
-  /比特币|Bitcoin|BTC|以太坊|ETH|加密货币|数字货币|虚拟货币|币圈|Web3/ => 加密货币
-  /币安|Binance|Coinbase|OKX|火币|交易所/ => 交易所
-  /灰度|贝莱德|BlackRock|GBTC|比特币ETF|现货ETF/ => 机构
+  # 中文
+  /比特币|以太坊|加密货币|数字货币|虚拟货币|币圈/ => 加密货币
+  /币安|火币|交易所/ => 交易所
+  /灰度|贝莱德|比特币ETF|现货ETF/ => 机构
   /暴跌|暴涨|崩盘|清算|爆仓|巨鲸/ => 行情
-  @35
+  # 英文
+  /\bBTC\b|Bitcoin|cryptocurrency|crypto market|digital asset/ => Bitcoin
+  /\bETH\b|Ethereum|Solana|\bSOL\b|altcoin/ => Altcoins
+  /Binance|Coinbase|OKX|Kraken|Bybit|exchange/ => Exchange
+  /BlackRock|Grayscale|GBTC|spot ETF|ETF approval|institutional/ => Institutional
+  /bull run|bear market|rally|dump|whale|liquidation/ => Market
+  @40
   !化工ETF
   !医药ETF
   !黄金ETF
-  !白银ETF
 
   [Crypto-技术风险]
-  /挖矿|矿机|算力|减半|halving|矿工/ => 挖矿
+  # 中文
+  /挖矿|矿机|算力|减半|矿工/ => 挖矿
   /黑客攻击|盗币|漏洞|被盗|智能合约/ => 安全
   /稳定币|USDT|USDC|脱锚|储备/ => 稳定币
   /DeFi|NFT|公链|Layer2|跨链/ => 生态
-  @20
+  # 英文
+  /mining|hashrate|halving|miner|difficulty/ => Mining
+  /hack|exploit|vulnerability|stolen|security breach|rug pull/ => Security
+  /stablecoin|USDT|USDC|Tether|Circle|depeg|reserve/ => Stablecoin
+  /DeFi|DEX|liquidity|yield|staking|airdrop/ => DeFi
+  /Layer 2|L2|rollup|bridge|cross-chain|Web3/ => Infrastructure
+  @25
   !网暴
-  !网络攻击
   !遭攻击
 
   # ═══════════════════════════════════════════════════════════════
-  # Layer C — AI（效果好，微调）
+  # Layer C — AI
   # ═══════════════════════════════════════════════════════════════
 
   [AI-大模型]
-  /ChatGPT|GPT|OpenAI|Claude|Gemini|文心一言|通义千问|豆包|Kimi|DeepSeek/ => 大模型
+  # 中文
+  /ChatGPT|文心一言|通义千问|豆包|Kimi/ => 大模型
   /大模型|生成式AI|AIGC|Sora|视频生成|多模态/ => AI技术
-  /Sam Altman|奥特曼|黄仁勋|英伟达|NVIDIA/ => 关键人物
+  /奥特曼|黄仁勋|英伟达/ => 关键人物
   /AI监管|AI安全|AI伦理|版权|deepfake/ => 治理
-  @30
+  # 英文
+  /OpenAI|GPT-4|GPT-5|ChatGPT|Claude|Anthropic|Gemini|DeepSeek|Mistral|Llama/ => LLM
+  /\bLLM\b|large language model|foundation model|generative AI|AGI|ASI/ => AI Tech
+  /Sam Altman|Jensen Huang|Dario Amodei|Demis Hassabis/ => AI Leaders
+  /NVIDIA|AI chip|GPU|TPU|inference|training/ => AI Infra
+  /AI regulation|AI safety|alignment|hallucination|AI ethics/ => AI Governance
+  @35
 
   [AI-应用]
+  # 中文
   /AI应用|AI产品|Copilot|Agent|智能体|AI助手|AI编程/ => 应用
   /AI融资|AI估值|AI创业/ => 投资
-  @15
+  # 英文
+  /AI agent|AI assistant|AI coding|Copilot|AI tool|AI startup/ => AI Apps
+  /AI funding|AI valuation|AI unicorn/ => AI Investment
+  /RAG|fine-tuning|prompt engineering|embedding|vector/ => AI Dev
+  @20
 
   # ═══════════════════════════════════════════════════════════════
-  # Layer D — 科技产业（修复误匹配）
+  # Layer D — 科技产业
   # ═══════════════════════════════════════════════════════════════
 
   [机器人-具身智能]
-  /机器人|人形机器人|具身智能|humanoid/ => 机器人
-  /波士顿动力|Figure|特斯拉机器人|Optimus|宇树|优必选/ => 公司
+  # 中文
+  /机器人|人形机器人|具身智能/ => 机器人
+  /波士顿动力|特斯拉机器人|宇树|优必选/ => 公司
   /灵巧手|关节|伺服|减速器/ => 硬件
+  # 英文
+  /robot|robotics|humanoid|embodied AI|autonomous/ => Robotics
+  /Boston Dynamics|Figure AI|Agility|Unitree|Optimus/ => Companies
+  /actuator|gripper|SLAM|reinforcement learning|sim2real/ => Tech
   @25
 
   [芯片-半导体]
+  # 中文
   /芯片|半导体|晶圆|制程|光刻机|EUV/ => 芯片
-  /台积电|TSMC|三星|英特尔|中芯|华为海思/ => 厂商
-  /英伟达|NVIDIA|AMD|高通|联发科/ => 设计
+  /台积电|三星|英特尔|中芯|华为海思/ => 厂商
+  /英伟达|AMD|高通|联发科/ => 设计
   /禁令|出口管制|制裁|国产替代/ => 产业链
+  # 英文
+  /semiconductor|chip|wafer|lithography|EUV|fab/ => Semiconductor
+  /TSMC|Samsung|Intel|SMIC|GlobalFoundries/ => Foundry
+  /NVIDIA|AMD|Qualcomm|ARM|chip design/ => Design
+  /chip ban|export control|CHIPS Act/ => Policy
   @25
 
   [苹果-Apple]
-  /苹果公司|Apple|iPhone|iPad|MacBook|iOS|库克|Tim Cook/ => 苹果
+  # 中文
+  /苹果公司|iPhone|iPad|MacBook|iOS|库克/ => 苹果
   /苹果发布会|WWDC|苹果新品|苹果开售/ => 新品
   /Vision Pro|Apple Watch|AirPods/ => 产品线
+  # 英文
+  /\bApple\b|iPhone|iPad|MacBook|iOS|macOS|Tim Cook/ => Apple
+  /WWDC|Apple event|Apple launch|App Store/ => Events
+  /Vision Pro|Apple Watch|AirPods|Apple Silicon|M4/ => Products
   @20
   !苹果醋
   !苹果汁
   !水果
+  !apple pie
+  !apple juice
 
   [特斯拉-Tesla]
-  /特斯拉|Tesla|马斯克|Elon Musk/ => 特斯拉
+  # 中文
+  /特斯拉|马斯克/ => 特斯拉
   /自动驾驶|FSD|Robotaxi|无人驾驶|智驾/ => 自动驾驶
   /特斯拉降价|特斯拉涨价|特斯拉销量|特斯拉交付|特斯拉工厂/ => 业务
   /特斯拉召回|特斯拉事故|特斯拉起火/ => 安全
+  # 英文
+  /\bTesla\b|Elon Musk|Cybertruck/ => Tesla
+  /FSD|Full Self-Driving|Autopilot|Robotaxi|autonomous driving/ => Autonomy
+  /Tesla delivery|Tesla sales|Gigafactory|Tesla earnings/ => Business
+  /Tesla recall|NHTSA/ => Safety
   @20
-  !Model走秀
   !模特
+  !Model走秀
 
   [航天-Space]
+  # 中文
   /火箭发射|航天发射|卫星发射|载人航天/ => 航天
-  /SpaceX|星舰|Starship|猎鹰|Falcon/ => SpaceX
+  /星舰|猎鹰/ => SpaceX
   /神舟|天宫|嫦娥|长征火箭|中国航天/ => 中国航天
-  /NASA|月球|火星|登月|探测器/ => 探索
+  # 英文
+  /SpaceX|Starship|Falcon 9|Falcon Heavy|rocket launch/ => SpaceX
+  /NASA|Artemis|SLS|Moon|Mars|lunar/ => NASA
+  /Blue Origin|Rocket Lab|satellite|orbit|ISS|space station/ => Space
   @20
   !航天股
   !航天板块
   !商业航天调整
-  !商业航天回调
 
   # ═══════════════════════════════════════════════════════════════
-  # Layer E — 工具与方法（修复误匹配）
+  # Layer E — Quant & 工具
   # ═══════════════════════════════════════════════════════════════
 
   [Quant-量化]
+  # 中文
   /量化交易|量化投资|对冲基金|量化私募|量化策略/ => 量化
   /高频交易|算法交易|程序化交易|套利|做市/ => 交易
   /因子投资|动量策略|统计套利|多因子/ => 策略
-  @15
+  # 英文
+  /quant|quantitative|hedge fund|systematic|algorithmic trading/ => Quant
+  /high frequency|HFT|market making|arbitrage|alpha/ => Trading
+  /factor investing|momentum|mean reversion|stat arb|backtest/ => Strategy
+  /risk management|Sharpe|drawdown|VaR|portfolio/ => Risk
+  @20
   !高盛策略师
-  !分析师
+  !分析师警告
 
   [PKM-工具]
+  # 中文
   /Obsidian|Notion|Logseq|笔记软件|知识管理|PKM|第二大脑/ => 工具
   /Zotero|文献管理|论文管理/ => 学术
-  @10
+  # 英文
+  /Obsidian|Notion|Logseq|Roam|note-taking|PKM|second brain/ => Tools
+  /Zotero|Readwise|Anki|spaced repetition/ => Learning
+  /PARA|Zettelkasten|evergreen notes|knowledge graph/ => Methods
+  @15
   !阿尔茨海默
   !老年痴呆
-  !新研究发现
 
   [开发-编程]
+  # 中文
   /Python|Rust|Go语言|TypeScript|开源项目|GitHub/ => 编程
   /PostgreSQL|Redis|向量数据库|数据库/ => 数据
+  # 英文
+  /Python|Rust|Go|TypeScript|JavaScript|open source/ => Programming
+  /PostgreSQL|Redis|SQLite|DuckDB|vector database|database/ => Database
+  /API|SDK|framework|library|developer|programming/ => Dev
   @15
+
 
 
 
