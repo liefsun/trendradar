@@ -27,13 +27,10 @@
 [GLOBAL_FILTER]
 震惊
 必看
-崩溃
-怒了
-泪目
-竟然
 万万没想到
 细思极恐
-/带货|直播|网红|明星|恋情|离婚|绯闻/
+
+
 
 
 
@@ -152,211 +149,159 @@
 #
 # ───────────────────────────────────────────────────────────────
 
+
+
 [WORD_GROUPS]
 
 # ═══════════════════════════════════════════════════════════════
-#                         英国 / 英伦生活 & 监管
+# Layer A — Broad Radar（广覆盖不漏大事）
 # ═══════════════════════════════════════════════════════════════
 
-[英国-宏观政策]
-+英国
-/央行|利率|通胀|CPI|就业|GDP|预算|财政|春季预算|秋季预算/ => UK宏观
-/\bBoE\b|\bBank of England\b/ => 英国央行
-@6
+[World-地缘政治与冲突]
+/地缘|地缘政治|战争|冲突|停火|制裁|军演|导弹|袭击|恐袭|人质|联合国|UN|NATO|北约|G7|G20/ => 地缘政治
+/乌克兰|俄罗斯|以色列|加沙|伊朗|叙利亚|红海|胡塞|台海|南海|朝鲜|半岛/ => 热点地区
+@30
 
-[英国-金融监管/加密监管]
-+英国
-/FCA|监管|牌照|合规|执法|处罚|禁令/ => UK监管
-/加密|crypto|bitcoin|stablecoin|exchange|custody/ => UK加密
-@6
+[World-能源与大宗]
+/原油|Oil|WTI|Brent|天然气|Gas|OPEC|产量|减产|LNG|电价/ => 能源
+/黄金|Gold|白银|Silver|铜|Copper|大宗|Commodity/ => 大宗
+@25
 
-[英国-签证与移民]
-+英国
-/签证|移民|工签|PSW|Graduate Route|Skilled Worker|ILR|Home Office|BRP/ => UK签证
-@6
+[World-全球科技与商业]
+/反垄断|monopoly|antitrust|裁员|layoff|并购|acquisition|IPO|融资|funding|估值|valuation/ => 商业
+/芯片|半导体|光刻机|TSMC|台积电|ASML|NVIDIA|AMD|Intel/ => 半导体
+@30
 
-[英国-就业/量化岗位]
-+英国
-/量化|Quant|Systematic|Research|Trading|Risk|Portfolio|Data Scientist/ => UK量化岗位
-/对冲基金|Hedge Fund|投行|IB|Asset Management|Prop|Market Making/ => UK机构
-@6
+[UK-英国综合雷达]
+/\bUK\b|Britain|British|England|London|Westminster|Downing Street|No\.10|Parliament/ => UK锚点
+/BoE|Bank of England|Sterling|\bGBP\b|Gilts|Chancellor|Treasury/ => UK金融锚点
+@35
+# 下面这些是常见噪音（先轻过滤，后面看情况再加）
+!Premier League
+!Man United
+!Arsenal
+!Chelsea
+!transfer
 
-[英国-大学/学术]
-+英国
-/大学|博士|PhD|viva|thesis|corrections|submission/ => UK学术
-@4
+[EU-欧洲综合雷达]
+/EU|European Union|欧洲|欧盟|Brussels|ECB|European Central Bank|欧央行/ => 欧洲
+/France|Germany|Italy|Spain|Poland|Nordic|法国|德国|意大利|西班牙|波兰/ => 主要国家
+@30
 
+[US-美国综合雷达]
+/US|U\.S\.|United States|美国|White House|Congress|Senate|Supreme Court/ => 美国政治
+/Fed|Federal Reserve|FOMC|Powell|Treasury|10Y|2Y|yields/ => 美国宏观金融锚点
+@35
 
-# ═══════════════════════════════════════════════════════════════
-#                         Web3 / Crypto（你论文&兴趣相关）
-# ═══════════════════════════════════════════════════════════════
-
-[Bitcoin-核心]
-/\bBitcoin\b|\bBTC\b|比特币/ => BTC
-/减半|halving|矿工|mining|hashrate|算力|手续费|mempool/ => 链上&矿业
-@8
-
-[Crypto-宏观联动]
-/比特币|BTC|加密|crypto/
-+利率
-/美联储|Fed|降息|加息|通胀|CPI|PCE|美元|DXY|国债收益率|10年期/ => 宏观条件
-@6
-
-[ETF-与机构资金]
-/Bitcoin ETF|BTC ETF|现货ETF|ETF净流入|BlackRock|iShares|Fidelity|ARK|Grayscale|GBTC/ => BTC ETF
-@6
-
-[交易所/合规事件]
-/Binance|Coinbase|OKX|Kraken|Bybit|Bitfinex/ => 交易所
-/SEC|CFTC|FCA|MiCA|诉讼|和解|罚款|监管/ => 监管动作
-@6
-
-[DeFi-基础]
-/DeFi|去中心化金融|DEX|AMM|LP|借贷|Lending|Aave|Compound|Uniswap|Curve/ => DeFi
-@6
-
-[Stablecoin-与支付]
-/stablecoin|稳定币|USDT|Tether|USDC|Circle|DAI|PayPal USD|PYUSD/ => 稳定币
-/储备|审计|peg|脱锚|depeg|赎回|监管/ => 风险事件
-@6
-
-[Layer2-与扩容]
-/Layer2|L2|二层|rollup|Arbitrum|Optimism|Base|zkSync|Starknet/ => L2
-@5
-
-[安全事件/黑客]
-/hack|hacker|漏洞|攻击|被盗|rug|跑路|bridge hack|跨链桥/ => 安全事件
-@6
+[CN-中国综合雷达]
+/中国|China|北京|国务院|发改委|央行|PBoC|财政部|税务|监管/ => 中国政策锚点
+/房地产|地产|房价|地方债|城投|财政|土地财政/ => 中国结构性议题
+@35
 
 
 # ═══════════════════════════════════════════════════════════════
-#                         金融市场 / 宏观（偏量化可用）
+# Layer B — Precision Feeds（论文/投资/职业：更“可用”的素材）
 # ═══════════════════════════════════════════════════════════════
 
-[美联储-利率通胀]
-+美国
-/美联储|Fed|FOMC|Powell|降息|加息|利率|通胀|CPI|PCE|就业|非农|NFP/ => US宏观
-@6
+[Macro-央行与通胀（全球）]
+/CPI|PCE|inflation|通胀|核心通胀|reflation|disinflation|就业|unemployment|GDP|PMI/ => 宏观数据
+/加息|降息|rate hike|rate cut|dot plot|forward guidance|QE|QT|紧缩|宽松/ => 货币政策
+@30
 
-[市场风险指标]
-/VIX|波动率指数|恐慌指数/ => VIX
-/信用利差|CDS|流动性|银行危机|挤兑/ => 风险事件
-@6
+[Policy-税务与监管（对你生活/职业影响大）]
+/税|税务|tax|capital gains|CGT|income tax|NI|National Insurance|VAT/ => 税务
+/监管|regulation|合规|compliance|FCA|SEC|CFTC|MiCA|执法|罚款|settlement/ => 监管执法
+@25
 
-[大类资产与避险]
-/黄金|Gold|原油|Oil|WTI|Brent/ => 大宗
-/美债|Treasury|10年期|2年期|收益率曲线|倒挂/ => 债券
-@6
+[Crypto-大事件总览（不漏）]
+/\bBTC\b|Bitcoin|比特币|\bETH\b|Ethereum|\bSOL\b|Solana|crypto|加密/ => Crypto
+/ETF|inflow|outflow|现货ETF|BlackRock|iShares|Fidelity|Grayscale|GBTC/ => ETF&机构
+/交易所|exchange|Binance|Coinbase|OKX|Kraken|Bybit|custody|托管/ => 交易所&基础设施
+@40
 
-[汇率与美元流动性]
-/美元|DXY|汇率|GBPUSD|USDCNY|EURUSD|日元|JPY/ => FX
-/流动性|紧缩|宽松|QE|QT/ => 流动性
-@6
+[Crypto-宏观联动（论文核心 AND 逻辑）]
++Bitcoin
+/Fed|FOMC|Powell|CPI|PCE|DXY|Treasury|10Y|2Y|yield|liquidity|QE|QT|risk-on|risk-off|correlation|decouple/ => BTC宏观联动
+@25
+
+[Crypto-链上与矿业（论文/研究素材）]
+/Hashrate|difficulty|miner|mining|mempool|fee|UTXO|链上|算力|矿工|手续费|减半|halving/ => 链上&矿业
+@25
+
+[Crypto-风险事件（安全/脱锚/监管）]
+/hack|exploit|vulnerability|rug|被盗|漏洞|攻击|bridge|跨链桥/ => 安全事件
+/depeg|脱锚|stablecoin|稳定币|USDT|USDC|Circle|Tether|reserve|审计/ => 稳定币风险
+@25
+
+[Quant-行业与岗位雷达（广覆盖）]
+/quant|systematic|algo trading|alpha|research|trader|portfolio|risk|execution|market making|prop trading|hedge fund/ => Quant行业
+@30
+
+[Quant-方法论与模型（可直接转化为学习/项目）]
+/factor|smart beta|stat arb|mean reversion|momentum|carry|volatility targeting/ => 策略
+/backtest|walk-forward|overfit|data snooping|Sharpe|drawdown|VaR|Expected Shortfall|CVaR|stress test/ => 回测&风控
+/GARCH|EGARCH|DCC|stochastic volatility|regime|Markov switching|MS-VAR|VAR/ => 波动率&状态切换
+@30
+
+[Quant-工程与数据栈（工具更新）]
+/Python|pandas|numpy|polars|numba|pyarrow|duckdb|clickhouse|postgres|timeseries|time series/ => 数据栈
+/kdb\+|\bq\b|tick data|order book|microstructure|slippage|market impact/ => 高频&微观结构
+@25
+
+[Robotics-机器人与具身智能（重点）]
+/机器人|robot|robotics|humanoid|人形机器人|具身智能|embodied AI|autonomy|SLAM|sim2real|强化学习|reinforcement learning/ => 机器人&具身
+/Boston Dynamics|Figure AI|Agility Robotics|Unitree|宇树|特斯拉机器人|Optimus|灵巧手|gripper|actuator|伺服|减速器/ => 机器人产业链
+@30
+# 常见噪音先轻过滤
+!机器人女友
+!机器人老婆
+!玩具
+!儿童
+
+[Apple-苹果与生态]
+/\bApple\b|苹果|Tim Cook|库克|iPhone|iPad|MacBook|Mac|iOS|iPadOS|macOS|watchOS|AirPods|Vision Pro|App Store/ => Apple
+/发布会|WWDC|keynote|A\d{1,2}\b|M\d\b|chip|SoC|TSMC|供应链|Foxconn|富士康/ => Apple关键事件
+@30
+# 噪音（可选，先不加太狠）
+!壁纸
+!手机壳
+!二手
+
+[Tesla-特斯拉（车/AI/能源）]
+/\bTesla\b|特斯拉|Elon Musk|马斯克|Model 3|Model Y|Cybertruck|FSD|Full Self-Driving|Autopilot|Dojo/ => Tesla主线
+/Robotaxi|自动驾驶|智驾|无人驾驶|安全事故|召回|NHTSA|监管|工厂|Shanghai Gigafactory|4680|电池/ => Tesla事件
+@35
+# 常见噪音（八卦）
+!绯闻
+!离婚
+!恋情
+
+[Space-火箭与载人航天（重点）]
+/航天|太空|space|rocket|launch|发射|火箭|载人|crew|spacecraft|飞船|空间站|ISS|对接|返回舱/ => 航天主线
+/SpaceX|Starship|Falcon 9|Crew Dragon|NASA|Artemis|SLS|Blue Origin|ULA|Arianespace|ESA|Roscosmos|CNSA|长征|神舟|天宫|嫦娥/ => 机构与型号
+@35
+# 轻过滤：把“星座/星座运势”这种排掉
+!星座运势
+!塔罗
+
+[AI-模型与发布]
+/OpenAI|ChatGPT|Sora|Anthropic|Claude|Gemini|DeepSeek|Mistral|Llama/ => 模型发布
+/LLM|Transformer|RAG|Agent|multimodal|context window|inference|fine-tuning|alignment|eval|benchmark/ => 技术关键词
+@30
+
+[AI-应用与商业化]
+/AI|大模型|copilot|assistant|workflow|agent|RPA|automation|企业AI|toB|SaaS|subscription/ => AI应用
+/融资|funding|估值|valuation|IPO|并购|acquisition|反垄断|antitrust|监管/ => 商业事件
+@25
+
+[Tech-发布会与新品（兜底）]
+/发布会|keynote|WWDC|launch event|新品|发布|开售|pre-order|首发|评测|review/ => 新品发布
+@25
 
 
-# ═══════════════════════════════════════════════════════════════
-#                         Quant / Systematic（你求职主线）
-# ═══════════════════════════════════════════════════════════════
+[PKM-工具与方法（广覆盖）]
+/PKM|knowledge management|Second Brain|PARA|GTD|Zettelkasten|evergreen notes|workflow|note-to-paper/ => PKM方法
+/Obsidian|Logseq|Zotero|Readwise|Anki|Markdown|Pandoc|BibTeX|CSL|citation/ => 工具链
+@35
 
-[Quant-机构与岗位]
-/quant|systematic|systematic trading|alpha research|research scientist|statistical arbitrage/ => Quant岗位
-/\bQR\b|\bQIS\b|\bQRM\b|\bQuant Research\b|\bQuant Trading\b|\bRisk\b/ => 职能关键词
-@6
-
-[Quant-方法与模型]
-/因子|factor|alpha|signal|portfolio construction|risk parity|optimization|mean-variance/ => 因子与组合
-/回测|backtest|walk-forward|overfit|data snooping|cross-validation/ => 回测与过拟合
-@6
-
-[Quant-波动率与风险管理]
-/VaR|CVaR|Expected Shortfall|stress test|drawdown|tail risk/ => 风控
-/DCC|GARCH|EGARCH|stochastic volatility|volatility targeting/ => 波动率模型
-@6
-
-[Market Microstructure]
-/microstructure|order book|limit order|market impact|slippage|liquidity|spread/ => 微观结构
-@5
-
-[Quant-技术栈]
-/Python|pandas|numpy|polars|numba|pyarrow|backtrader|zipline/ => Python量化
-/\bSQL\b|PostgreSQL|DuckDB|ClickHouse/ => 数据库
-@6
-
-
-# ═══════════════════════════════════════════════════════════════
-#                         AI / 芯片（你已有，但我补强“更像资讯雷达”的写法）
-# ═══════════════════════════════════════════════════════════════
-
-[AI-模型与公司]
-/\bOpenAI\b|\bChatGPT\b|\bSora\b|\bSam Altman\b/ => OpenAI
-/\bAnthropic\b|\bClaude\b|\bDario Amodei\b/ => Anthropic
-/谷歌|DeepMind|Gemini|Waymo/ => Google AI
-@8
-
-[AI-技术关键词]
-+AI
-/agent|RAG|multimodal|上下文窗口|推理|训练|对齐|微调|蒸馏|评测|benchmark/ => AI技术
-!段子
-!表情包
-@8
-
-[芯片-关键玩家]
-/英伟达|黄仁勋|\bNVIDIA\b|CUDA|RTX/ => NVIDIA
-/\bAMD\b|Ryzen|EPYC|Lisa Su/ => AMD
-/台积电|TSMC|先进制程|3nm|2nm/ => TSMC
-@8
-
-# ═══════════════════════════════════════════════════════════════
-#                         PKM / Knowledge Work（个人知识管理）
-# ═══════════════════════════════════════════════════════════════
-
-[Obsidian-生态与插件]
-/\bObsidian\b|黑曜石/ => Obsidian
-/Dataview|Templater|QuickAdd|Kanban|Tasks plugin|Periodic Notes|Excalidraw/ => 插件
-@6
-
-[Zotero-文献流]
-/\bZotero\b|Zotero插件|Better BibTeX|BBT|citekey|BibTeX/ => Zotero
-/文献管理|引用|参考文献|citation|bibliography/ => 引用体系
-@6
-
-[Readwise-输入系统]
-/\bReadwise\b|Reader|Readwise Reader/ => Readwise
-/highlight|标注|摘录|稍后读|read-it-later/ => 摘录/稍后读
-@5
-
-[Anki-记忆系统]
-/\bAnki\b|FSRS|spaced repetition|间隔重复/ => Anki
-/卡片模板|cloze|挖空|记忆曲线|复习策略/ => 卡片方法
-@5
-
-[Second Brain-方法论]
-/Second Brain|Building a Second Brain|BASB|PARA|CODE method/ => Second Brain
-/GTD|Getting Things Done|任务系统|行动系统/ => GTD
-@5
-
-[Workflow-写作与研究]
-/学术写作|literature review|systematic review|笔记到论文|note-to-paper/ => 写作工作流
-/知识整合|evergreen notes|常青笔记|原子笔记|atomic notes/ => 笔记方法
-@6
-
-[Markdown-与文本工具链]
-/\bMarkdown\b|md|frontmatter|YAML front matter/ => Markdown
-/\bPandoc\b|LaTeX|BibTeX|citation style|CSL/ => 文档编译
-@5
-
-[Automation-PKM自动化]
-/n8n|Zapier|Make\.com|IFTTT|webhook/ => 自动化
-/同步|sync|capture|inbox|pipeline|workflow/ => 流水线
-@6
-
-[Search-与个人搜索]
-/DevonThink|DEVONthink|Alfred|Raycast|全文检索|search/ => 搜索
-/语义搜索|semantic search|向量|vector database|RAG/ => 语义检索
-@6
-
-[CLI-与开发者写作]
-/Neovim|nvim|vim|Markdown editing|写作环境/ => Neovim写作
-/\bgh\b|GitHub CLI|git workflow|dotfiles/ => CLI工具链
-@5
 
