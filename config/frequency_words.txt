@@ -25,8 +25,16 @@
 #   /赌博|博彩/       用 /.../ 包裹可以匹配多个词（用 | 分隔）
 
 [GLOBAL_FILTER]
-# 过滤标题党
 震惊
+必看
+崩溃
+怒了
+泪目
+竟然
+万万没想到
+细思极恐
+/带货|直播|网红|明星|恋情|离婚|绯闻/
+
 
 
 
@@ -147,109 +155,208 @@
 [WORD_GROUPS]
 
 # ═══════════════════════════════════════════════════════════════
-#                         企业与品牌
+#                         英国 / 英伦生活 & 监管
 # ═══════════════════════════════════════════════════════════════
 
-/胖东来|于东来/ => 胖东来
+[英国-宏观政策]
++英国
+/央行|利率|通胀|CPI|就业|GDP|预算|财政|春季预算|秋季预算/ => UK宏观
+/\bBoE\b|\bBank of England\b/ => 英国央行
+@6
 
-/深度求索|幻方量化|梁文锋|\bDeepSeek\b/ => DeepSeek
+[英国-金融监管/加密监管]
++英国
+/FCA|监管|牌照|合规|执法|处罚|禁令/ => UK监管
+/加密|crypto|bitcoin|stablecoin|exchange|custody/ => UK加密
+@6
 
-/华为|任正非|余承东|鸿蒙|海思|昇腾|鲲鹏|\bHUAWEI\b|\bHarmonyOS\b|\bHiSilicon\b/ => 华为
+[英国-签证与移民]
++英国
+/签证|移民|工签|PSW|Graduate Route|Skilled Worker|ILR|Home Office|BRP/ => UK签证
+@6
 
-/比亚迪|王传福|方程豹|腾势|仰望|弗迪|刀片电池|云辇|\bBYD\b|\bDenza\b|\bYangwang\b/ => 比亚迪
+[英国-就业/量化岗位]
++英国
+/量化|Quant|Systematic|Research|Trading|Risk|Portfolio|Data Scientist/ => UK量化岗位
+/对冲基金|Hedge Fund|投行|IB|Asset Management|Prop|Market Making/ => UK机构
+@6
 
-/大疆|汪滔|灵眸|如影|\bDJI\b|\bRoboMaster\b|\bMavic\b|\bZenmuse\b/ => 大疆
-
-/宇树|王兴兴|\bUnitree\b/ => 宇树机器人
-
-/智元|灵犀|稚晖君|彭志辉|AgiBot/ => 智元机器人
-/众擎|EngineAI|赵同阳/ => 众擎机器人
-
-/黑神话|冯骥/ => 黑神话悟空
-
-/影之刃零|梁其伟/ => 影之刃零
-
-/三体|流浪地球|刘慈欣|郭帆/ => 三体/流浪地球
-
-申奥
-
-/京东|刘强东|\bJD\b|\bJingdong\b/ => 京东
-
-/字节|张一鸣|梁汝波|抖音|\bByteDance\b|\bTikTok\b|\bDouyin\b|\bLark\b|\bCapCut\b/ => 字节跳动
-
-/腾讯|鹅厂|马化腾|微信|QQ|天美|阅文集团|微众银行|\bTencent\b|\bPony Ma\b|\bWeChat\b|\bLightSpeed\b|\bWeBank\b/ => 腾讯
-
-/qwen|minimax|glm/ => 国产开源模型
-
-/特斯拉|马斯克|\bTesla\b|\bElon Musk\b|\bCybertruck\b|\bModel 3\b|\bModel Y\b|\bModel S\b|\bModel X\b|\bFSD\b/ => 特斯拉
-
-/英伟达|黄仁勋|\bNVIDIA\b|\bGeForce\b|\bRTX\b|\bCUDA\b|\bJensen Huang\b/ => 英伟达
-/苏姿丰|锐龙|霄龙|\bAMD\b|\bRyzen\b|\bEPYC\b|\bRadeon\b|\bLisa Su\b/ => AMD
-
-/微软|\bMicrosoft\b|\bWindows\b|\bAzure\b|\bSatya Nadella\b|\bCopilot\b/ => 微软
-/谷歌|皮查伊|安卓|油管|\bGoogle\b|\bAlphabet\b|\bAndroid\b|\bChrome\b|\bYouTube\b|\bGemini\b|\bDeepMind\b|\bWaymo\b/ => 谷歌
-/库克|\biPhone\b|\biPad\b|\bMacBook\b|\biOS\b|\bVision Pro\b|\bAirPods\b|\bApple\b|\bTim Cook\b/ => 苹果
-
-/\bOpenAI\b|\bChatGPT\b|\bSora\b|\bDALL-E\b|\bSam Altman\b|\bGreg Brockman\b/ => OpenAI
-/\bAnthropic\b|\bClaude\b|\bDario Amodei\b/ => Claude
+[英国-大学/学术]
++英国
+/大学|博士|PhD|viva|thesis|corrections|submission/ => UK学术
+@4
 
 
 # ═══════════════════════════════════════════════════════════════
-#                         国家与地区
+#                         Web3 / Crypto（你论文&兴趣相关）
 # ═══════════════════════════════════════════════════════════════
 
-[中国]
-国产
-中国
+[Bitcoin-核心]
+/\bBitcoin\b|\bBTC\b|比特币/ => BTC
+/减半|halving|矿工|mining|hashrate|算力|手续费|mempool/ => 链上&矿业
+@8
 
-[东亚]
-日本
-朝鲜
-韩国
+[Crypto-宏观联动]
+/比特币|BTC|加密|crypto/
++利率
+/美联储|Fed|降息|加息|通胀|CPI|PCE|美元|DXY|国债收益率|10年期/ => 宏观条件
+@6
 
-[北美]
-美国
-加拿大
+[ETF-与机构资金]
+/Bitcoin ETF|BTC ETF|现货ETF|ETF净流入|BlackRock|iShares|Fidelity|ARK|Grayscale|GBTC/ => BTC ETF
+@6
 
-[西欧]
-法国
-英国
+[交易所/合规事件]
+/Binance|Coinbase|OKX|Kraken|Bybit|Bitfinex/ => 交易所
+/SEC|CFTC|FCA|MiCA|诉讼|和解|罚款|监管/ => 监管动作
+@6
 
-/俄罗斯|俄国/ => 俄罗斯
+[DeFi-基础]
+/DeFi|去中心化金融|DEX|AMM|LP|借贷|Lending|Aave|Compound|Uniswap|Curve/ => DeFi
+@6
 
-印度
+[Stablecoin-与支付]
+/stablecoin|稳定币|USDT|Tether|USDC|Circle|DAI|PayPal USD|PYUSD/ => 稳定币
+/储备|审计|peg|脱锚|depeg|赎回|监管/ => 风险事件
+@6
+
+[Layer2-与扩容]
+/Layer2|L2|二层|rollup|Arbitrum|Optimism|Base|zkSync|Starknet/ => L2
+@5
+
+[安全事件/黑客]
+/hack|hacker|漏洞|攻击|被盗|rug|跑路|bridge hack|跨链桥/ => 安全事件
+@6
 
 
 # ═══════════════════════════════════════════════════════════════
-#                         科技领域
+#                         金融市场 / 宏观（偏量化可用）
 # ═══════════════════════════════════════════════════════════════
 
-[AI 相关]
-/(?<![a-zA-Z])ai(?![a-zA-Z])/i
-人工智能
+[美联储-利率通胀]
++美国
+/美联储|Fed|FOMC|Powell|降息|加息|利率|通胀|CPI|PCE|就业|非农|NFP/ => US宏观
+@6
 
-[芯片]
-芯片
-光刻机
-半导体
+[市场风险指标]
+/VIX|波动率指数|恐慌指数/ => VIX
+/信用利差|CDS|流动性|银行危机|挤兑/ => 风险事件
+@6
 
-/水电|雅鲁藏布江/ => 水电
-/光伏|太阳能/ => 光伏
-核能
-能源
+[大类资产与避险]
+/黄金|Gold|原油|Oil|WTI|Brent/ => 大宗
+/美债|Treasury|10年期|2年期|收益率曲线|倒挂/ => 债券
+@6
 
-/自动驾驶|无人驾驶|智驾/ => 自动驾驶
+[汇率与美元流动性]
+/美元|DXY|汇率|GBPUSD|USDCNY|EURUSD|日元|JPY/ => FX
+/流动性|紧缩|宽松|QE|QT/ => 流动性
+@6
 
-机器人
-/机械狗|四足/ => 机器狗
-具身智能
 
-/月球|登月|火星|宇宙|飞船|航天|空间站|卫星/ => 航天
+# ═══════════════════════════════════════════════════════════════
+#                         Quant / Systematic（你求职主线）
+# ═══════════════════════════════════════════════════════════════
 
-# 前沿科技
-量子
-脑机
-基因
+[Quant-机构与岗位]
+/quant|systematic|systematic trading|alpha research|research scientist|statistical arbitrage/ => Quant岗位
+/\bQR\b|\bQIS\b|\bQRM\b|\bQuant Research\b|\bQuant Trading\b|\bRisk\b/ => 职能关键词
+@6
 
-# 产业政策
-生产力
+[Quant-方法与模型]
+/因子|factor|alpha|signal|portfolio construction|risk parity|optimization|mean-variance/ => 因子与组合
+/回测|backtest|walk-forward|overfit|data snooping|cross-validation/ => 回测与过拟合
+@6
+
+[Quant-波动率与风险管理]
+/VaR|CVaR|Expected Shortfall|stress test|drawdown|tail risk/ => 风控
+/DCC|GARCH|EGARCH|stochastic volatility|volatility targeting/ => 波动率模型
+@6
+
+[Market Microstructure]
+/microstructure|order book|limit order|market impact|slippage|liquidity|spread/ => 微观结构
+@5
+
+[Quant-技术栈]
+/Python|pandas|numpy|polars|numba|pyarrow|backtrader|zipline/ => Python量化
+/\bSQL\b|PostgreSQL|DuckDB|ClickHouse/ => 数据库
+@6
+
+
+# ═══════════════════════════════════════════════════════════════
+#                         AI / 芯片（你已有，但我补强“更像资讯雷达”的写法）
+# ═══════════════════════════════════════════════════════════════
+
+[AI-模型与公司]
+/\bOpenAI\b|\bChatGPT\b|\bSora\b|\bSam Altman\b/ => OpenAI
+/\bAnthropic\b|\bClaude\b|\bDario Amodei\b/ => Anthropic
+/谷歌|DeepMind|Gemini|Waymo/ => Google AI
+@8
+
+[AI-技术关键词]
++AI
+/agent|RAG|multimodal|上下文窗口|推理|训练|对齐|微调|蒸馏|评测|benchmark/ => AI技术
+!段子
+!表情包
+@8
+
+[芯片-关键玩家]
+/英伟达|黄仁勋|\bNVIDIA\b|CUDA|RTX/ => NVIDIA
+/\bAMD\b|Ryzen|EPYC|Lisa Su/ => AMD
+/台积电|TSMC|先进制程|3nm|2nm/ => TSMC
+@8
+
+# ═══════════════════════════════════════════════════════════════
+#                         PKM / Knowledge Work（个人知识管理）
+# ═══════════════════════════════════════════════════════════════
+
+[Obsidian-生态与插件]
+/\bObsidian\b|黑曜石/ => Obsidian
+/Dataview|Templater|QuickAdd|Kanban|Tasks plugin|Periodic Notes|Excalidraw/ => 插件
+@6
+
+[Zotero-文献流]
+/\bZotero\b|Zotero插件|Better BibTeX|BBT|citekey|BibTeX/ => Zotero
+/文献管理|引用|参考文献|citation|bibliography/ => 引用体系
+@6
+
+[Readwise-输入系统]
+/\bReadwise\b|Reader|Readwise Reader/ => Readwise
+/highlight|标注|摘录|稍后读|read-it-later/ => 摘录/稍后读
+@5
+
+[Anki-记忆系统]
+/\bAnki\b|FSRS|spaced repetition|间隔重复/ => Anki
+/卡片模板|cloze|挖空|记忆曲线|复习策略/ => 卡片方法
+@5
+
+[Second Brain-方法论]
+/Second Brain|Building a Second Brain|BASB|PARA|CODE method/ => Second Brain
+/GTD|Getting Things Done|任务系统|行动系统/ => GTD
+@5
+
+[Workflow-写作与研究]
+/学术写作|literature review|systematic review|笔记到论文|note-to-paper/ => 写作工作流
+/知识整合|evergreen notes|常青笔记|原子笔记|atomic notes/ => 笔记方法
+@6
+
+[Markdown-与文本工具链]
+/\bMarkdown\b|md|frontmatter|YAML front matter/ => Markdown
+/\bPandoc\b|LaTeX|BibTeX|citation style|CSL/ => 文档编译
+@5
+
+[Automation-PKM自动化]
+/n8n|Zapier|Make\.com|IFTTT|webhook/ => 自动化
+/同步|sync|capture|inbox|pipeline|workflow/ => 流水线
+@6
+
+[Search-与个人搜索]
+/DevonThink|DEVONthink|Alfred|Raycast|全文检索|search/ => 搜索
+/语义搜索|semantic search|向量|vector database|RAG/ => 语义检索
+@6
+
+[CLI-与开发者写作]
+/Neovim|nvim|vim|Markdown editing|写作环境/ => Neovim写作
+/\bgh\b|GitHub CLI|git workflow|dotfiles/ => CLI工具链
+@5
+
