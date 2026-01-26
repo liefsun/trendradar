@@ -154,7 +154,9 @@
 [WORD_GROUPS]
 
 # ═══════════════════════════════════════════════════════════════
+
 # Layer A — Broad Radar（广覆盖不漏大事）
+
 # ═══════════════════════════════════════════════════════════════
 
 [World-地缘政治与冲突]
@@ -173,10 +175,9 @@
 @30
 
 [UK-英国综合雷达]
-/\bUK\b|Britain|British|England|London|Westminster|Downing Street|No\.10|Parliament/ => UK锚点
+/\bUK\b|Britain|British|England|London|Westminster|Downing Street|No.10|Parliament/ => UK锚点
 /BoE|Bank of England|Sterling|\bGBP\b|Gilts|Chancellor|Treasury/ => UK金融锚点
 @35
-# 下面这些是常见噪音（先轻过滤，后面看情况再加）
 !Premier League
 !Man United
 !Arsenal
@@ -189,7 +190,7 @@
 @30
 
 [US-美国综合雷达]
-/US|U\.S\.|United States|美国|White House|Congress|Senate|Supreme Court/ => 美国政治
+/US|U.S.|United States|美国|White House|Congress|Senate|Supreme Court/ => 美国政治
 /Fed|Federal Reserve|FOMC|Powell|Treasury|10Y|2Y|yields/ => 美国宏观金融锚点
 @35
 
@@ -198,9 +199,10 @@
 /房地产|地产|房价|地方债|城投|财政|土地财政/ => 中国结构性议题
 @35
 
-
 # ═══════════════════════════════════════════════════════════════
+
 # Layer B — Precision Feeds（论文/投资/职业：更“可用”的素材）
+
 # ═══════════════════════════════════════════════════════════════
 
 [Macro-央行与通胀（全球）]
@@ -220,9 +222,9 @@
 @40
 
 [Crypto-宏观联动（论文核心 AND 逻辑）]
-+Bitcoin
+/\bBitcoin\b|\bBTC\b|比特币|crypto|加密|digital asset|数字资产/ => Crypto锚点
 /Fed|FOMC|Powell|CPI|PCE|DXY|Treasury|10Y|2Y|yield|liquidity|QE|QT|risk-on|risk-off|correlation|decouple/ => BTC宏观联动
-@25
+@30
 
 [Crypto-链上与矿业（论文/研究素材）]
 /Hashrate|difficulty|miner|mining|mempool|fee|UTXO|链上|算力|矿工|手续费|减半|halving/ => 链上&矿业
@@ -245,14 +247,13 @@
 
 [Quant-工程与数据栈（工具更新）]
 /Python|pandas|numpy|polars|numba|pyarrow|duckdb|clickhouse|postgres|timeseries|time series/ => 数据栈
-/kdb\+|\bq\b|tick data|order book|microstructure|slippage|market impact/ => 高频&微观结构
+/kdb+|kdb|q language|kx systems|tick data|order book|microstructure|slippage|market impact/ => 高频&微观结构
 @25
 
 [Robotics-机器人与具身智能（重点）]
 /机器人|robot|robotics|humanoid|人形机器人|具身智能|embodied AI|autonomy|SLAM|sim2real|强化学习|reinforcement learning/ => 机器人&具身
 /Boston Dynamics|Figure AI|Agility Robotics|Unitree|宇树|特斯拉机器人|Optimus|灵巧手|gripper|actuator|伺服|减速器/ => 机器人产业链
 @30
-# 常见噪音先轻过滤
 !机器人女友
 !机器人老婆
 !玩具
@@ -262,7 +263,6 @@
 /\bApple\b|苹果|Tim Cook|库克|iPhone|iPad|MacBook|Mac|iOS|iPadOS|macOS|watchOS|AirPods|Vision Pro|App Store/ => Apple
 /发布会|WWDC|keynote|A\d{1,2}\b|M\d\b|chip|SoC|TSMC|供应链|Foxconn|富士康/ => Apple关键事件
 @30
-# 噪音（可选，先不加太狠）
 !壁纸
 !手机壳
 !二手
@@ -271,7 +271,6 @@
 /\bTesla\b|特斯拉|Elon Musk|马斯克|Model 3|Model Y|Cybertruck|FSD|Full Self-Driving|Autopilot|Dojo/ => Tesla主线
 /Robotaxi|自动驾驶|智驾|无人驾驶|安全事故|召回|NHTSA|监管|工厂|Shanghai Gigafactory|4680|电池/ => Tesla事件
 @35
-# 常见噪音（八卦）
 !绯闻
 !离婚
 !恋情
@@ -280,7 +279,6 @@
 /航天|太空|space|rocket|launch|发射|火箭|载人|crew|spacecraft|飞船|空间站|ISS|对接|返回舱/ => 航天主线
 /SpaceX|Starship|Falcon 9|Crew Dragon|NASA|Artemis|SLS|Blue Origin|ULA|Arianespace|ESA|Roscosmos|CNSA|长征|神舟|天宫|嫦娥/ => 机构与型号
 @35
-# 轻过滤：把“星座/星座运势”这种排掉
 !星座运势
 !塔罗
 
@@ -298,10 +296,10 @@
 /发布会|keynote|WWDC|launch event|新品|发布|开售|pre-order|首发|评测|review/ => 新品发布
 @25
 
-
 [PKM-工具与方法（广覆盖）]
 /PKM|knowledge management|Second Brain|PARA|GTD|Zettelkasten|evergreen notes|workflow|note-to-paper/ => PKM方法
 /Obsidian|Logseq|Zotero|Readwise|Anki|Markdown|Pandoc|BibTeX|CSL|citation/ => 工具链
 @35
+
 
 
