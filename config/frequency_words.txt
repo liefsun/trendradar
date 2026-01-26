@@ -24,12 +24,28 @@
 #   震惊              直接写词，包含"震惊"的新闻会被过滤
 #   /赌博|博彩/       用 /.../ 包裹可以匹配多个词（用 | 分隔）
 
-[GLOBAL_FILTER]
-震惊
-必看
-万万没想到
-细思极恐
 
+[GLOBAL_FILTER]
+  震惊
+  必看
+  万万没想到
+  细思极恐
+  离婚
+  出轨
+  恋情
+  分手
+  绯闻
+  八卦
+  明星
+  综艺
+  选秀
+  追星
+  饭圈
+  塌房
+  玩具
+  儿童
+  手机壳
+  壁纸
 
 
 
@@ -153,153 +169,127 @@
 
 [WORD_GROUPS]
 
-# ═══════════════════════════════════════════════════════════════
+  # ═══════════════════════════════════════════════════════════════
+  # Layer A — 时事与宏观（保留你的政治兴趣）
+  # ═══════════════════════════════════════════════════════════════
 
-# Layer A — Broad Radar（广覆盖不漏大事）
+  [时事-国际热点]
+  /战争|冲突|停火|制裁|军演|导弹|袭击|入侵|撤军|谈判/ => 冲突
+  /乌克兰|俄罗斯|以色列|加沙|伊朗|叙利亚|朝鲜|台海|南海/ => 热点地区
+  /普京|泽连斯基|拜登|特朗普|内塔尼亚胡|哈马斯|胡塞/ => 关键人物
+  @35
 
-# ═══════════════════════════════════════════════════════════════
+  [时事-中国政策]
+  /国务院|发改委|央行|财政部|政治局|两会|总书记|习近平/ => 高层
+  /政策|改革|监管|整顿|约谈|罚款|反垄断|合规/ => 政策
+  /房价|房地产|楼市|土地|地方债|城投|财政/ => 经济结构
+  @30
 
-[World-地缘政治与冲突]
-/地缘|地缘政治|战争|冲突|停火|制裁|军演|导弹|袭击|恐袭|人质|联合国|UN|NATO|北约|G7|G20/ => 地缘政治
-/乌克兰|俄罗斯|以色列|加沙|伊朗|叙利亚|红海|胡塞|台海|南海|朝鲜|半岛/ => 热点地区
-@30
+  [时事-英美欧]
+  /英国|伦敦|英镑|脱欧|议会|首相|苏纳克|斯塔默/ => 英国
+  /美国|白宫|国会|美联储|拜登|特朗普|美元|关税/ => 美国
+  /欧洲|欧盟|欧央行|德国|法国|意大利/ => 欧洲
+  @30
 
-[World-能源与大宗]
-/原油|Oil|WTI|Brent|天然气|Gas|OPEC|产量|减产|LNG|电价/ => 能源
-/黄金|Gold|白银|Silver|铜|Copper|大宗|Commodity/ => 大宗
-@25
+  [宏观-央行与市场]
+  /加息|降息|利率|通胀|CPI|PMI|GDP|就业|失业/ => 宏观数据
+  /美联储|Fed|鲍威尔|央行|货币政策|QE|QT|流动性/ => 央行
+  /美股|A股|港股|纳斯达克|标普|道琼斯|恒生|上证/ => 股市
+  /美债|国债|收益率|汇率|人民币|美元|黄金|原油/ => 资产
+  @35
 
-[World-全球科技与商业]
-/反垄断|monopoly|antitrust|裁员|layoff|并购|acquisition|IPO|融资|funding|估值|valuation/ => 商业
-/芯片|半导体|光刻机|TSMC|台积电|ASML|NVIDIA|AMD|Intel/ => 半导体
-@30
+  # ═══════════════════════════════════════════════════════════════
+  # Layer B — 核心关注（Crypto + Quant + AI）
+  # ═══════════════════════════════════════════════════════════════
 
-[UK-英国综合雷达]
-/\bUK\b|Britain|British|England|London|Westminster|Downing Street|No.10|Parliament/ => UK锚点
-/BoE|Bank of England|Sterling|\bGBP\b|Gilts|Chancellor|Treasury/ => UK金融锚点
-@35
-!Premier League
-!Man United
-!Arsenal
-!Chelsea
-!transfer
+  [Crypto-综合]
+  /比特币|Bitcoin|BTC|以太坊|ETH|加密货币|数字货币|虚拟货币|币圈/ => 加密货币
+  /交易所|币安|Binance|Coinbase|OKX|火币/ => 交易所
+  /ETF|灰度|贝莱德|BlackRock|机构|持仓/ => 机构
+  /监管|SEC|合规|牌照|禁令|打击/ => 监管
+  /暴跌|暴涨|崩盘|清算|爆仓|巨鲸/ => 行情
+  @40
 
-[EU-欧洲综合雷达]
-/EU|European Union|欧洲|欧盟|Brussels|ECB|European Central Bank|欧央行/ => 欧洲
-/France|Germany|Italy|Spain|Poland|Nordic|法国|德国|意大利|西班牙|波兰/ => 主要国家
-@30
+  [Crypto-技术与风险]
+  /挖矿|矿机|算力|减半|halving|矿工/ => 挖矿
+  /黑客|攻击|盗币|漏洞|安全|被盗/ => 安全
+  /稳定币|USDT|USDC|脱锚|储备/ => 稳定币
+  /DeFi|NFT|Web3|链上|公链|Layer2/ => 生态
+  @25
 
-[US-美国综合雷达]
-/US|U.S.|United States|美国|White House|Congress|Senate|Supreme Court/ => 美国政治
-/Fed|Federal Reserve|FOMC|Powell|Treasury|10Y|2Y|yields/ => 美国宏观金融锚点
-@35
+  [Quant-量化投资]
+  /量化|对冲基金|私募|基金|alpha|策略/ => 量化
+  /高频|算法交易|程序化|套利|做市/ => 交易
+  /风控|回撤|波动|VaR|压力测试/ => 风控
+  /因子|动量|价值|统计套利|多因子/ => 策略
+  @25
 
-[CN-中国综合雷达]
-/中国|China|北京|国务院|发改委|央行|PBoC|财政部|税务|监管/ => 中国政策锚点
-/房地产|地产|房价|地方债|城投|财政|土地财政/ => 中国结构性议题
-@35
+  [AI-大模型]
+  /ChatGPT|GPT|OpenAI|Claude|Gemini|文心一言|通义千问|豆包|Kimi/ => 大模型
+  /大模型|AI|人工智能|生成式|AIGC|Sora|视频生成/ => AI技术
+  /Sam Altman|奥特曼|黄仁勋|英伟达|NVIDIA/ => 关键人物
+  /AI监管|AI安全|伦理|版权|deepfake/ => AI治理
+  @35
 
-# ═══════════════════════════════════════════════════════════════
+  [AI-应用与投资]
+  /AI应用|AI产品|Copilot|Agent|智能体|助手/ => 应用
+  /AI融资|AI估值|AI创业|独角兽/ => 投资
+  /裁员|招聘|AI岗位|算法工程师/ => 就业
+  @20
 
-# Layer B — Precision Feeds（论文/投资/职业：更“可用”的素材）
+  # ═══════════════════════════════════════════════════════════════
+  # Layer C — 科技产业（机器人、芯片、苹果、特斯拉）
+  # ═══════════════════════════════════════════════════════════════
 
-# ═══════════════════════════════════════════════════════════════
+  [机器人-具身智能]
+  /机器人|人形机器人|具身智能|humanoid/ => 机器人
+  /波士顿动力|Figure|特斯拉机器人|Optimus|宇树|优必选/ => 公司
+  /灵巧手|关节|伺服|减速器|传感器/ => 硬件
+  /强化学习|模仿学习|Sim2Real|SLAM/ => 技术
+  @30
 
-[Macro-央行与通胀（全球）]
-/CPI|PCE|inflation|通胀|核心通胀|reflation|disinflation|就业|unemployment|GDP|PMI/ => 宏观数据
-/加息|降息|rate hike|rate cut|dot plot|forward guidance|QE|QT|紧缩|宽松/ => 货币政策
-@30
+  [芯片-半导体]
+  /芯片|半导体|晶圆|制程|光刻机|EUV/ => 芯片
+  /台积电|TSMC|三星|英特尔|中芯|华为海思/ => 厂商
+  /英伟达|NVIDIA|AMD|高通|联发科/ => 设计
+  /禁令|出口管制|制裁|国产替代|自主可控/ => 产业链
+  @30
 
-[Policy-税务与监管（对你生活/职业影响大）]
-/税|税务|tax|capital gains|CGT|income tax|NI|National Insurance|VAT/ => 税务
-/监管|regulation|合规|compliance|FCA|SEC|CFTC|MiCA|执法|罚款|settlement/ => 监管执法
-@25
+  [苹果-Apple]
+  /苹果|Apple|iPhone|iPad|Mac|iOS|库克/ => 苹果
+  /发布会|WWDC|新品|开售|预售|首发/ => 新品
+  /Vision Pro|Apple Watch|AirPods/ => 产品线
+  /供应链|富士康|立讯|代工/ => 供应链
+  @25
 
-[Crypto-大事件总览（不漏）]
-/\bBTC\b|Bitcoin|比特币|\bETH\b|Ethereum|\bSOL\b|Solana|crypto|加密/ => Crypto
-/ETF|inflow|outflow|现货ETF|BlackRock|iShares|Fidelity|Grayscale|GBTC/ => ETF&机构
-/交易所|exchange|Binance|Coinbase|OKX|Kraken|Bybit|custody|托管/ => 交易所&基础设施
-@40
+  [特斯拉-Tesla]
+  /特斯拉|Tesla|马斯克|Musk|Model/ => 特斯拉
+  /自动驾驶|FSD|Robotaxi|无人驾驶|智驾/ => 自动驾驶
+  /降价|涨价|销量|交付|产能|工厂/ => 业务
+  /召回|事故|起火|安全/ => 安全
+  @25
 
-[Crypto-宏观联动（论文核心 AND 逻辑）]
-/\bBitcoin\b|\bBTC\b|比特币|crypto|加密|digital asset|数字资产/ => Crypto锚点
-/Fed|FOMC|Powell|CPI|PCE|DXY|Treasury|10Y|2Y|yield|liquidity|QE|QT|risk-on|risk-off|correlation|decouple/ => BTC宏观联动
-@30
+  [航天-Space]
+  /火箭|发射|航天|太空|卫星|空间站/ => 航天
+  /SpaceX|星舰|Starship|猎鹰|马斯克/ => SpaceX
+  /神舟|天宫|嫦娥|长征|中国航天|载人/ => 中国航天
+  /NASA|月球|火星|登月|探测/ => 探索
+  @25
 
-[Crypto-链上与矿业（论文/研究素材）]
-/Hashrate|difficulty|miner|mining|mempool|fee|UTXO|链上|算力|矿工|手续费|减半|halving/ => 链上&矿业
-@25
+  # ═══════════════════════════════════════════════════════════════
+  # Layer D — 工具与方法
+  # ═══════════════════════════════════════════════════════════════
 
-[Crypto-风险事件（安全/脱锚/监管）]
-/hack|exploit|vulnerability|rug|被盗|漏洞|攻击|bridge|跨链桥/ => 安全事件
-/depeg|脱锚|stablecoin|稳定币|USDT|USDC|Circle|Tether|reserve|审计/ => 稳定币风险
-@25
+  [PKM-知识管理]
+  /Obsidian|Notion|Logseq|笔记|知识管理|PKM/ => 工具
+  /Zotero|文献|论文|学术|研究/ => 学术
+  @15
 
-[Quant-行业与岗位雷达（广覆盖）]
-/quant|systematic|algo trading|alpha|research|trader|portfolio|risk|execution|market making|prop trading|hedge fund/ => Quant行业
-@30
+  [开发-编程]
+  /Python|Rust|Go|TypeScript|开源|GitHub/ => 编程
+  /数据库|Redis|PostgreSQL|向量数据库/ => 数据
+  @15
 
-[Quant-方法论与模型（可直接转化为学习/项目）]
-/factor|smart beta|stat arb|mean reversion|momentum|carry|volatility targeting/ => 策略
-/backtest|walk-forward|overfit|data snooping|Sharpe|drawdown|VaR|Expected Shortfall|CVaR|stress test/ => 回测&风控
-/GARCH|EGARCH|DCC|stochastic volatility|regime|Markov switching|MS-VAR|VAR/ => 波动率&状态切换
-@30
-
-[Quant-工程与数据栈（工具更新）]
-/Python|pandas|numpy|polars|numba|pyarrow|duckdb|clickhouse|postgres|timeseries|time series/ => 数据栈
-/kdb+|kdb|q language|kx systems|tick data|order book|microstructure|slippage|market impact/ => 高频&微观结构
-@25
-
-[Robotics-机器人与具身智能（重点）]
-/机器人|robot|robotics|humanoid|人形机器人|具身智能|embodied AI|autonomy|SLAM|sim2real|强化学习|reinforcement learning/ => 机器人&具身
-/Boston Dynamics|Figure AI|Agility Robotics|Unitree|宇树|特斯拉机器人|Optimus|灵巧手|gripper|actuator|伺服|减速器/ => 机器人产业链
-@30
-!机器人女友
-!机器人老婆
-!玩具
-!儿童
-
-[Apple-苹果与生态]
-/\bApple\b|苹果|Tim Cook|库克|iPhone|iPad|MacBook|Mac|iOS|iPadOS|macOS|watchOS|AirPods|Vision Pro|App Store/ => Apple
-/发布会|WWDC|keynote|A\d{1,2}\b|M\d\b|chip|SoC|TSMC|供应链|Foxconn|富士康/ => Apple关键事件
-@30
-!壁纸
-!手机壳
-!二手
-
-[Tesla-特斯拉（车/AI/能源）]
-/\bTesla\b|特斯拉|Elon Musk|马斯克|Model 3|Model Y|Cybertruck|FSD|Full Self-Driving|Autopilot|Dojo/ => Tesla主线
-/Robotaxi|自动驾驶|智驾|无人驾驶|安全事故|召回|NHTSA|监管|工厂|Shanghai Gigafactory|4680|电池/ => Tesla事件
-@35
-!绯闻
-!离婚
-!恋情
-
-[Space-火箭与载人航天（重点）]
-/航天|太空|space|rocket|launch|发射|火箭|载人|crew|spacecraft|飞船|空间站|ISS|对接|返回舱/ => 航天主线
-/SpaceX|Starship|Falcon 9|Crew Dragon|NASA|Artemis|SLS|Blue Origin|ULA|Arianespace|ESA|Roscosmos|CNSA|长征|神舟|天宫|嫦娥/ => 机构与型号
-@35
-!星座运势
-!塔罗
-
-[AI-模型与发布]
-/OpenAI|ChatGPT|Sora|Anthropic|Claude|Gemini|DeepSeek|Mistral|Llama/ => 模型发布
-/LLM|Transformer|RAG|Agent|multimodal|context window|inference|fine-tuning|alignment|eval|benchmark/ => 技术关键词
-@30
-
-[AI-应用与商业化]
-/AI|大模型|copilot|assistant|workflow|agent|RPA|automation|企业AI|toB|SaaS|subscription/ => AI应用
-/融资|funding|估值|valuation|IPO|并购|acquisition|反垄断|antitrust|监管/ => 商业事件
-@25
-
-[Tech-发布会与新品（兜底）]
-/发布会|keynote|WWDC|launch event|新品|发布|开售|pre-order|首发|评测|review/ => 新品发布
-@25
-
-[PKM-工具与方法（广覆盖）]
-/PKM|knowledge management|Second Brain|PARA|GTD|Zettelkasten|evergreen notes|workflow|note-to-paper/ => PKM方法
-/Obsidian|Logseq|Zotero|Readwise|Anki|Markdown|Pandoc|BibTeX|CSL|citation/ => 工具链
-@35
 
 
 
