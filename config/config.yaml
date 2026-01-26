@@ -31,8 +31,6 @@ platforms:
   sources:
     - id: "toutiao"
       name: "今日头条"
-    - id: "baidu"
-      name: "百度热搜"
     - id: "wallstreetcn-hot"
       name: "华尔街见闻"
     - id: "thepaper"
@@ -57,7 +55,10 @@ platforms:
       name: "V2EX"
     - id: "weibo"
       name: "微博"
-
+    - id: "hupu"
+      name: "虎扑"
+    - id: "36kr-renqi"
+      name: "36氪 人气榜"
 
 
 
@@ -189,7 +190,7 @@ display:
    # - new_items                       # 1️⃣ 新增热点区域
     - hotlist                         # 2️⃣ 热榜区域（关键词匹配）
     - rss                             # 3️⃣ RSS 订阅区域
-    - standalone                      # 4️⃣ 独立展示区
+   # - standalone                      # 4️⃣ 独立展示区
     
 
   # 推送区域开关
@@ -203,7 +204,7 @@ display:
                                       # 开启后将对 RSS 进行关键词分析并在通知中展示
                                       # 关闭后跳过分析，但独立展示区不受影响
 
-    standalone: true               # 独立展示区（完整热榜/RSS，不受关键词过滤）
+    standalone: false               # 独立展示区（完整热榜/RSS，不受关键词过滤）
     ai_analysis: true                 # AI 分析区域
 
   # 📋 独立展示区配置（仅在 regions.standalone: true 时生效）
