@@ -189,7 +189,7 @@ display:
    # - new_items                       # 1️⃣ 新增热点区域
     - hotlist                         # 2️⃣ 热榜区域（关键词匹配）
     - rss                             # 3️⃣ RSS 订阅区域
-   # - standalone                      # 4️⃣ 独立展示区
+    - standalone                      # 4️⃣ 独立展示区
     
 
   # 推送区域开关
@@ -214,8 +214,8 @@ display:
   # 注意：同一新闻可能同时出现在关键词匹配区和独立展示区
   standalone:
     platforms: []                     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: []                     # RSS 源 ID 列表（如 ["hacker-news"]）
-    max_items: 20                     # 每个源最多展示条数（0=不限制）
+    rss_feeds: ["coindesk", "hackernews-rss", "bbc-business"]  # RSS 源 ID 列表（如 ["hacker-news"]）
+    max_items: 10                     # 每个源最多展示条数（0=不限制）
 
 
 # ===============================================================
