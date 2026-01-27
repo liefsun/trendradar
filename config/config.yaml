@@ -501,10 +501,10 @@ ai_analysis:
   #   - 推送 incremental（避免重复），AI 分析 current（看当前榜单变化）
   #   - 推送 current（实时热点），AI 分析 daily（全天总结）
   #
-  mode: "follow_report"
+  mode: "current"
 
   # 分析内容配置
-  max_news_for_analysis: 50         # 参与分析的新闻数量上限（控制成本关键项）
+  max_news_for_analysis: 100         # 参与分析的新闻数量上限（控制成本关键项）
                                     # 推送消息顶部会显示实际的 AI 分析数供参考
 
                                     # api 成本估算 (仅供参考)
@@ -517,7 +517,7 @@ ai_analysis:
 
   include_rss: true                 # 是否包含 RSS 内容进行分析
 
-  include_rank_timeline: true      # 是否传递完整排名时间线
+  include_rank_timeline: false      # 是否传递完整排名时间线
                                     # false: 使用简化格式（排名范围+时间范围+出现次数）
                                     # true: 传递完整排名变化轨迹（如 1(09:30)→2(10:00)→0(11:00)）
                                     # 启用后 AI 能更精确分析热度趋势，但会额外增加 token 消耗（0.5 倍到 1 倍）
