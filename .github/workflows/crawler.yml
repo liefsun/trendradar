@@ -2,7 +2,7 @@ name: Get Hot News
 
 on:
   schedule:
-    - cron: "55 0-14 * * *"
+    - cron: "55 1,6,11 * * *"
   workflow_dispatch:
     # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     # ⚠️ 试用版说明 / Trial Mode
