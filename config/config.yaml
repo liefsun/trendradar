@@ -19,46 +19,60 @@ app:
 
 
 # ===============================================================
-# 2. 数据源 - 热榜平台
-#
+# 2. 数据源 - 热榜平台 (全景视野：精英情报 + 大众底色)
 # enabled: 是否启用热榜抓取（总开关）
 # sources: 平台列表
 #   - id: 平台唯一标识（勿修改）
 #   - name: 显示名称（可自定义，修改后不影响运行）
 # ===============================================================
+
 platforms:
-  enabled: true                         # 是否启用热榜平台抓取
+  enabled: true
   sources:
-    - id: "toutiao"
-      name: "今日头条"
+    # ━━━ 1. 核心金融与宏观 (Market Alpha) ━━━
     - id: "wallstreetcn-hot"
       name: "华尔街见闻"
-    - id: "thepaper"
-      name: "澎湃新闻"
-    - id: "bilibili-hot-search"
-      name: "bilibili 热搜"
     - id: "cls-hot"
       name: "财联社热门"
-    - id: "ifeng"
-      name: "凤凰网"
-    - id: "douyin"
-      name: "抖音"
-    - id: "zhihu"
-      name: "知乎"
-    - id: "kaopu"
-      name: "靠谱新闻"
+    # - id: "gelonghui"
+    #   name: "格隆汇"  # 可选：如果你想再加一个财经“资讯热度榜”
+
+    # ━━━ 2. 硬核科技与安全 (Tech & Security) ━━━
     - id: "hackernews"
       name: "Hacker News"
     - id: "solidot"
       name: "Solidot"
+    - id: "freebuf"
+      name: "FreeBuf"
     - id: "v2ex"
       name: "V2EX"
+    - id: "ithome"
+      name: "IT之家"
+
+    # ━━━ 3. 地缘与国际视野 (Geopolitics) ━━━
+    - id: "zaobao"
+      name: "联合早报"
+    - id: "cankaoxiaoxi"
+      name: "参考消息"
+    # - id: "sputniknewscn"
+    #   name: "卫星通讯社"  # 可选：立场源，想看再留
+
+    # ━━━ 4. 大众情绪与兜底 (Mass Sentiment) ━━━
     - id: "weibo"
       name: "微博"
-    - id: "hupu"
-      name: "虎扑"
-    - id: "36kr-renqi"
-      name: "36氪 人气榜"
+    - id: "baidu"
+      name: "百度热搜"
+    - id: "bilibili-hot-search"
+      name: "B站热搜"
+    - id: "zhihu"
+      name: "知乎"
+    - id: "toutiao"
+      name: "今日头条"   
+    - id: "douyin"
+      name: "抖音"
+
+  
+
 
 
 
@@ -85,7 +99,7 @@ rss:
   #    - 只有新鲜的文章会被推送到通知渠道
   freshness_filter:
     enabled: true                     # 是否启用新鲜度过滤（默认启用）
-    max_age_days: 3                   # 最大文章年龄（天）
+    max_age_days: 2                   # 最大文章年龄（天）
                                       # - 正整数：只推送 N 天内的文章
                                       # - 0：禁用过滤，推送所有文章
 
@@ -94,36 +108,77 @@ rss:
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
-    # ━━━ 学术研究 (Thesis) ━━━
-    - id: "arxiv-qfin"
-      name: "arXiv Quant Finance"
-      # 专门抓取量化金融/统计金融的最新论文
+    # ━━━ 1. 学术前沿 (Thesis Alpha) ━━━
+    - id: "arxiv-qfin-st"
+      name: "arXiv Quant (Stats)"
+      # 统计金融：你的核心领域
       url: "http://export.arxiv.org/rss/q-fin.ST"
+      max_age_days: 1
+
+    - id: "arxiv-qfin-pm"
+      name: "arXiv Quant (Portfolio)"
+      # 组合管理：面试常考
+      url: "http://export.arxiv.org/rss/q-fin.PM"
+      max_age_days: 1
+
+    # ━━━ 2. 深度 Crypto 研究 (Research) ━━━
+    - id: "bitmex-research"
+      name: "BitMEX Research"
+      # ✨ 替代 CoinTelegraph。频率低，但每篇都是 PhD 级别的深度文。
+      url: "https://blog.bitmex.com/feed/"
+      max_age_days: 14
+
+    - id: "coinmetrics-sotn"
+      name: "Coin Metrics — State of the Network"
+      url: "https://coinmetrics.substack.com/feed"
       max_age_days: 3
-
-    # ━━━ Crypto & Macro (Research) ━━━
+    
+    - id: "thedefiant"
+      name: "The Defiant"
+      url: "https://thedefiant.io/feed/"
+      max_age_days: 2
+    
+    # 可选兜底（资讯面更强，注意噪音）
     - id: "coindesk"
-      name: "CoinDesk"
-      url: "https://www.coindesk.com/arc/outboundfeeds/rss/"
+      name: "CoinDesk (All)"
+      url: "https://www.coindesk.com/arc/outboundfeeds/rss/?outputType=xml"
       max_age_days: 1
 
-    - id: "cointelegraph"
-      name: "CoinTelegraph"
-      url: "https://cointelegraph.com/rss"
-      max_age_days: 1
 
-    # ━━━ 英国与宏观 (Life & Career) ━━━
-    - id: "bbc-business"
-      name: "BBC Business"
-      # 关注英国经济、央行政策
-      url: "http://feeds.bbci.co.uk/news/business/rss.xml"
-      max_age_days: 1
+    # ━━━ 3. 英国宏观与央行 (Macro) ━━━
+    - id: "bank-of-england"
+      name: "Bank of England"
+      # ✨ 英国央行官方源：直接看一手政策，别看 BBC 的二手解读
+      url: "https://www.bankofengland.co.uk/rss/news"
+      max_age_days: 14
 
-    # ━━━ Tech & Quant (Skills) ━━━
-    - id: "hackernews-rss"
-      name: "Hacker News (Top)"
-      url: "https://hnrss.org/newest?points=100" # 只看 100 分以上的高质量讨论
+    - id: "project-syndicate"
+      name: "Project Syndicate"
+      # 全球顶级经济学家（Stiglitz等）的专栏，宏观视角的必读
+      url: "https://www.project-syndicate.org/rss"
+      max_age_days: 2
+
+    # ━━━ 4. Quant 业界动态 (Career) ━━━
+    - id: "quantocracy"
+      name: "Quantocracy"
+      # ✨ Quant 圈最好的聚合源：不仅有代码，还有策略回测讨论
+      url: "https://quantocracy.com/feed/"
       max_age_days: 1
+      # ━━━ 5. 观点与管理 (Perspective) ━━━
+    - id: "hbr"
+      name: "Harvard Business Review"
+      url: "http://feeds.harvardbusiness.org/harvardbusiness?format=xml"
+      max_age_days: 3   # incremental + 每小时：3天主要用于“防回灌/断更补课”
+  
+    - id: "mitsmr"
+      name: "MIT Sloan Management Review"
+      url: "http://feeds.feedburner.com/mitsmr"
+      max_age_days: 7   # 低频且质量高，窗口可以更长
+  
+    - id: "mit-sloan-news"
+      name: "MIT News (Sloan School of Management)"
+      url: "https://news.mit.edu/rss/topic/mit-sloan-school-management"
+      max_age_days: 7
 
       
     # 自定义源示例
@@ -204,7 +259,7 @@ display:
                                       # 开启后将对 RSS 进行关键词分析并在通知中展示
                                       # 关闭后跳过分析，但独立展示区不受影响
 
-    standalone: true               # 独立展示区（完整热榜/RSS，不受关键词过滤）
+    standalone: false               # 独立展示区（完整热榜/RSS，不受关键词过滤）
     ai_analysis: true                 # AI 分析区域
 
   # 📋 独立展示区配置（仅在 regions.standalone: true 时生效）
@@ -215,7 +270,7 @@ display:
   # 注意：同一新闻可能同时出现在关键词匹配区和独立展示区
   standalone:
     platforms: []                     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: ["coindesk", "hackernews-rss"]  # RSS 源 ID 列表（如 ["hacker-news"]）
+    rss_feeds: []  # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 10                     # 每个源最多展示条数（0=不限制）
 
 
