@@ -2,7 +2,8 @@ name: Get Hot News
 
 on:
   schedule:
-    - cron: "50 0-14 * * *"
+    - cron: "55 0-14 * * *"
+  workflow_dispatch:
     # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     # ⚠️ 试用版说明 / Trial Mode
     # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -38,7 +39,7 @@ on:
     #
     
 
-  workflow_dispatch:
+  
 
 concurrency:
   group: crawler-${{ github.ref_name }}
