@@ -255,6 +255,9 @@
   @10
   !网暴
   !遭攻击
+  !Federal Reserve
+  !IPAC
+  !FOMC
 
   # ═══════════════════════════════════════════════════════════════
   # Layer C — AI
@@ -334,7 +337,7 @@
   [特斯拉-Tesla]
   # 中文
   /特斯拉|马斯克/ => 特斯拉
-  /自动驾驶|FSD|Robotaxi|无人驾驶|智驾/ => 自动驾驶
+  /特斯拉自动驾驶|FSD|特斯拉Robotaxi|Tesla自动驾驶/ => 自动驾驶
   /特斯拉降价|特斯拉涨价|特斯拉销量|特斯拉交付|特斯拉工厂/ => 业务
   /特斯拉召回|特斯拉事故|特斯拉起火/ => 安全
   # 英文
@@ -400,6 +403,9 @@
   /PostgreSQL|Redis|SQLite|DuckDB|vector database|database/ => Database
   /API|SDK|framework|library|developer|programming/ => Dev
   @8
+  !hiring
+  !is hiring
+  !招聘
 
 
 
