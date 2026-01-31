@@ -46,20 +46,22 @@
   儿童
   手机壳
   壁纸
-
-
-
+  # 消费电子噪音（手机渲染图/配色/手机壳等）
+  渲染图
+  配色曝光
+  无线充电器曝光
+  保护壳
 
 
 # ───────────────────────────────────────────────────────────────
 #                        词组定义区
 # ───────────────────────────────────────────────────────────────
-# 在这里写入你想关注的关键词。
-# 每个词组用空行分隔，同一词组内的关键词是"或"的关系。
+# ⚠️ 重要：新闻只会匹配到第一个命中的词组（first match wins）
+#    所以越精确/越具体的词组要放在越前面，宽泛的放后面。
 #
-# ┌─────────────────────────────────────────────────────────────┐
-# │                      语法总览（快速参考）                      │
-# └─────────────────────────────────────────────────────────────┘
+# 当前排列策略：
+#   Layer A（时事宏观）→ Layer B（Crypto，收紧后）→ Layer C（AI）
+#   → Layer D（科技产业）→ Layer E（Quant & 工具）
 #
 # 关键词语法：
 #   关键词            普通关键词，标题包含即匹配
@@ -69,101 +71,6 @@
 #   +关键词           必须词，所有必须词都要匹配才算匹配
 #   !关键词           过滤词，匹配则排除该条新闻（仅限当前词组）
 #   @数字             限制该词组最多显示多少条
-#
-# 显示名称优先级：
-#   1. 有组别名 → 显示组别名
-#   2. 没有组别名 → 显示各行别名拼接（用 " / " 连接）
-#   3. 没有别名 → 显示关键词本身
-#
-#
-# ┌─────────────────────────────────────────────────────────────┐
-# │                      基础用法（推荐新手）                      │
-# └─────────────────────────────────────────────────────────────┘
-#
-# 1. 最简单：直接写关键词
-#    ────────────────────
-#    华为
-#
-#    效果：匹配所有包含"华为"的新闻
-#
-#
-# 2. 多个关键词归为一组
-#    ────────────────────
-#    华为
-#    鸿蒙
-#    任正非
-#
-#    效果：匹配包含"华为"或"鸿蒙"或"任正非"的新闻，统一显示为"华为 / 鸿蒙 / 任正非"
-#
-#
-# 3. 给词组起个名字（推荐）
-#    ────────────────────
-#    [华为]
-#    华为
-#    鸿蒙
-#    任正非
-#
-#    效果：同上，但显示名称为"华为"（更简洁）
-#
-#
-# ┌─────────────────────────────────────────────────────────────┐
-# │                      进阶用法（可选）                         │
-# └─────────────────────────────────────────────────────────────┘
-#
-# 4. 用正则表达式匹配多个词（一行搞定）
-#    ────────────────────
-#    /华为|鸿蒙|任正非/ => 华为
-#
-#    效果：匹配包含"华为"或"鸿蒙"或"任正非"的新闻，显示为"华为"
-#    说明：/.../ 里用 | 分隔多个词，=> 后面是显示名称
-#
-#    💡 不懂正则？问 AI：
-#       "帮我写一个正则表达式，匹配包含'华为'或'鸿蒙'或'任正非'的文本，
-#        格式要求：/正则/ => 显示名称"
-#
-#
-# 5. 精确匹配英文单词（避免误匹配）
-#    ────────────────────
-#    /\bAI\b/i => AI
-#
-#    说明：\b 表示单词边界，避免匹配到 "MAIL" 中的 "AI"
-#          /i 表示忽略大小写，"ai"、"AI"、"Ai" 都能匹配
-#
-#    💡 不懂正则？问 AI：
-#       "帮我写一个正则表达式，精确匹配英文单词'AI'（不匹配 MAIL 中的 AI），
-#        忽略大小写，格式要求：/正则/i => 显示名称"
-#
-#
-# 6. 排除特定内容
-#    ────────────────────
-#    [苹果公司]
-#    苹果
-#    !水果
-#    !果园
-#
-#    效果：匹配"苹果"但排除包含"水果"或"果园"的新闻
-#    说明：! 开头的词表示"排除"
-#
-#
-# 7. 限制显示条数
-#    ────────────────────
-#    [科技新闻]
-#    科技
-#    @5
-#
-#    效果：最多显示 5 条匹配的新闻
-#    说明：@数字 表示限制条数
-#
-#
-# 8. 必须同时包含多个词
-#    ────────────────────
-#    +苹果
-#    +发布会
-#
-#    效果：必须同时包含"苹果"和"发布会"才匹配
-#    说明：+ 开头的词表示"必须包含"
-#
-# ───────────────────────────────────────────────────────────────
 
 
 [WORD_GROUPS]
@@ -174,42 +81,52 @@
 
   [时事-国际热点]
   # 中文
-  /战争|冲突|停火|制裁|军演|导弹|袭击|入侵|撤军|谈判/ => 冲突
+  /战争|冲突|停火|制裁|军演|导弹|袭击|入侵|撤军/ => 冲突
   /乌克兰|俄罗斯|以色列|加沙|伊朗|叙利亚|朝鲜|台海|南海/ => 热点地区
-  /普京|泽连斯基|拜登|特朗普|内塔尼亚胡|哈马斯|胡塞|北约/ => 关键人物
+  /普京|泽连斯基|特朗普|内塔尼亚胡|哈马斯|胡塞|北约/ => 关键人物
+  /爱泼斯坦|外交官|大使馆|领事馆/ => 外交
   # 英文
   /Ukraine|Russia|Israel|Gaza|Iran|Syria|NATO|missile|sanction|ceasefire/ => Geopolitics
-  /Putin|Zelensky|Biden|Trump|Netanyahu|Hamas|Houthi/ => Key Figures
+  /Putin|Zelensky|Trump|Netanyahu|Hamas|Houthi/ => Key Figures
   @15
+  # 排除纯商业新闻中的"谈判"误匹配
+  !商务谈判
+  !薪资谈判
 
   [时事-中国政策]
-  # 中文
-  /国务院|发改委|央行|财政部|政治局|两会|总书记|习近平/ => 高层
-  /政策|改革|监管|整顿|约谈|罚款|反垄断|合规/ => 政策
-  /房价|房地产|楼市|土地|地方债|城投/ => 经济
+  # 中文 — 收紧：只匹配明确的中国政策相关
+  /国务院|发改委|财政部|政治局|两会|总书记|习近平/ => 高层
+  /中国.*监管|中国.*整顿|中国.*约谈|中国.*反垄断|网信办/ => 中国监管
+  /房价|房地产|楼市|地方债|城投/ => 经济
+  /中联部|外交部|商务部|工信部|市场监管总局/ => 部委
   # 英文
-  /China policy|Beijing|PBoC|NDRC|Xi Jinping|CCP|Chinese government/ => China
+  /China policy|Beijing|PBoC|NDRC|Xi Jinping|Chinese government/ => China
   @10
+  # 移除了宽泛的"政策|改革|监管|罚款|合规"，这些词在非中国语境下误匹配严重
+  # 例如"微软在德败诉面临罚款"不应归入中国政策
 
   [时事-英美欧]
   # 中文
   /英国|伦敦|英镑|脱欧|议会|首相|苏纳克|斯塔默/ => 英国
-  /美国|白宫|国会|拜登|特朗普/ => 美国
+  /白宫|国会|美国.*政府|美国.*停摆|美国.*司法/ => 美国
   /欧洲|欧盟|欧央行|德国|法国/ => 欧洲
   # 英文
   /\bUK\b|Britain|London|Parliament|Prime Minister|Starmer|Sunak|BoE|Sterling/ => UK
   /\bUS\b|United States|White House|Congress/ => US
   /\bEU\b|European|ECB|Brussels|Germany|France/ => EU
   @15
+  # 收紧了"美国"→改为更具体的"白宫|国会|美国.*政府"等
+  # 避免"美国蜜雪冰城"这类消费新闻误匹配
 
   [宏观-央行与市场]
   # 中文
   /加息|降息|利率|通胀|CPI|PMI|GDP|失业率/ => 宏观数据
-  /美联储|央行|货币政策|QE|QT|流动性|鲍威尔/ => 央行
+  /美联储|央行|货币政策|QE|QT|流动性|鲍威尔|沃什/ => 央行
   /美股|A股|港股|纳斯达克|标普|道琼斯|恒生|上证/ => 股市
   /美债|国债|收益率|人民币|黄金|原油|白银/ => 资产
+  /暴跌|暴涨|崩盘|跳水|熔断/ => 行情异动
   # 英文
-  /\bFed\b|FOMC|Powell|interest rate|rate hike|rate cut|inflation|CPI|GDP|unemployment/ => Macro
+  /\bFed\b|FOMC|Powell|Warsh|interest rate|rate hike|rate cut|inflation|CPI|GDP|unemployment/ => Macro
   /Treasury|yields|bonds|dollar|DXY|\bGBP\b|forex/ => Rates
   /gold|silver|oil|crude|Brent|WTI|commodity/ => Commodities
   /S&P 500|Nasdaq|Dow Jones|stock market|equities/ => Markets
@@ -217,47 +134,61 @@
   !化工
   !医药
   !食品
+  # ⬆️ 把 暴跌|暴涨|崩盘 从 Crypto 移到这里
+  # 因为这些词绝大多数时候指的是传统金融资产，不是 crypto
 
   # ═══════════════════════════════════════════════════════════════
-  # Layer B — Crypto
+  # Layer B — Crypto（大幅收紧，只匹配真正的 crypto 内容）
   # ═══════════════════════════════════════════════════════════════
 
   [Crypto-综合]
-  # 中文
+  # 中文 — 只保留 crypto 专属词汇
   /比特币|以太坊|加密货币|数字货币|虚拟货币|币圈/ => 加密货币
-  /币安|火币|交易所/ => 交易所
-  /灰度|贝莱德|比特币ETF|现货ETF/ => 机构
-  /暴跌|暴涨|崩盘|清算|爆仓|巨鲸/ => 行情
+  /币安|火币|OKX|Bybit/ => 交易所
+  /灰度|贝莱德.*比特币|比特币ETF|现货ETF/ => 机构
+  /爆仓|巨鲸|链上/ => Crypto行情
   # 英文
   /\bBTC\b|Bitcoin|cryptocurrency|crypto market|digital asset/ => Bitcoin
   /\bETH\b|Ethereum|Solana|\bSOL\b|altcoin/ => Altcoins
-  /Binance|Coinbase|OKX|Kraken|Bybit|exchange/ => Exchange
-  /BlackRock|Grayscale|GBTC|spot ETF|ETF approval|institutional/ => Institutional
-  /bull run|bear market|rally|dump|whale|liquidation/ => Market
-  /\bDEX\b|\bAMM\b|liquidity pool|\bMEV\b|on-chain analytics/ => DeFi Trading
+  /Binance|Coinbase|OKX|Kraken|Bybit/ => Exchange
+  /BlackRock.*Bitcoin|Grayscale|GBTC|spot ETF|ETF approval/ => Institutional
+  /bull run|bear market|whale|liquidation|on-chain/ => Market
+  /\bDEX\b|\bAMM\b|liquidity pool|\bMEV\b/ => DeFi Trading
   @15
   !化工ETF
   !医药ETF
   !黄金ETF
+  # ⬆️ 关键改动：
+  # - 移除 暴跌|暴涨|崩盘|清算（太宽泛，已移至宏观板块）
+  # - 移除 exchange（太宽泛，匹配 "foreign exchange" 等）
+  # - 移除 institutional（太宽泛）
+  # - 移除 rally|dump（太宽泛）
+  # - 贝莱德 改为 贝莱德.*比特币（避免贝莱德的非 crypto 新闻）
 
   [Crypto-技术风险]
   # 中文
-  /挖矿|矿机|算力|减半|矿工/ => 挖矿
-  /黑客攻击|盗币|链上漏洞|智能合约漏洞|被盗|智能合约/ => 安全
-  /稳定币|USDT|USDC|脱锚|储备/ => 稳定币
-  /DeFi|NFT|公链|Layer2|跨链/ => 生态
+  /挖矿|矿机|算力.*挖|减半|矿工/ => 挖矿
+  /盗币|链上漏洞|智能合约漏洞|智能合约/ => 安全
+  /稳定币|USDT|USDC|脱锚/ => 稳定币
+  /公链|Layer2|跨链|Web3/ => 生态
   # 英文
-  /mining|hashrate|halving|miner|difficulty/ => Mining
-  /hack|exploit|vulnerability|stolen|security breach|rug pull/ => Security
-  /stablecoin|USDT|USDC|Tether|Circle|depeg|reserve/ => Stablecoin
-  /DeFi|DEX|liquidity|yield|staking|airdrop/ => DeFi
-  /Layer 2|L2|rollup|bridge|cross-chain|Web3/ => Infrastructure
+  /hashrate|halving|miner|mining difficulty/ => Mining
+  /rug pull|crypto.*hack|crypto.*exploit|smart contract.*vulnerab/ => Security
+  /stablecoin|USDT|USDC|Tether|Circle|depeg/ => Stablecoin
+  /\bDeFi\b|\bNFT\b|airdrop|staking/ => DeFi
+  /Layer 2|\bL2\b|rollup|cross-chain|Web3/ => Infrastructure
   @10
   !网暴
   !遭攻击
   !Federal Reserve
   !IPAC
   !FOMC
+  # ⬆️ 关键改动：
+  # - 算力 → 算力.*挖（避免匹配 "算力航母" "AI算力" 等）
+  # - 移除宽泛的 hack|exploit|vulnerability|stolen|security breach
+  #   改为 crypto.*hack 等更精确的匹配
+  # - 移除 DeFi|NFT 中的 liquidity|yield（太宽泛，匹配金融新闻）
+  # - mining 改为更精确的组合
 
   # ═══════════════════════════════════════════════════════════════
   # Layer C — AI
@@ -267,25 +198,34 @@
   # 中文
   /ChatGPT|文心一言|通义千问|豆包|Kimi/ => 大模型
   /大模型|生成式AI|AIGC|Sora|视频生成|多模态/ => AI技术
-  /奥特曼|黄仁勋/ => 关键人物
-  /AI监管|AI安全|AI伦理|版权|deepfake/ => 治理
+  /奥特曼/ => 关键人物
+  /AI监管|AI安全|AI伦理|deepfake/ => 治理
   # 英文
   /OpenAI|GPT-4|GPT-5|ChatGPT|Claude|Anthropic|Gemini|DeepSeek|Mistral|Llama/ => LLM
   /\bLLM\b|large language model|foundation model|generative AI|AGI|ASI/ => AI Tech
-  /Sam Altman|Jensen Huang|Dario Amodei|Demis Hassabis/ => AI Leaders
-  /inference|training|AI infrastructure/ => AI Infra
+  /Sam Altman|Dario Amodei|Demis Hassabis/ => AI Leaders
+  /AI infrastructure|AI.*训练|AI.*推理/ => AI Infra
   /AI regulation|AI safety|alignment|hallucination|AI ethics/ => AI Governance
   @15
+  # ⬆️ 关键改动：
+  # - 移除 黄仁勋|Jensen Huang（应归芯片板块，不然英伟达 Shield TV 也算 AI）
+  # - 移除宽泛的 inference|training（太通用，应加 AI 前缀限定）
+  # - 移除 版权（太宽泛）
 
   [AI-应用]
   # 中文
-  /AI应用|AI产品|Copilot|Agent|智能体|AI助手|AI编程/ => 应用
+  /AI应用|AI产品|AI助手|AI编程/ => 应用
   /AI融资|AI估值|AI创业/ => 投资
+  /智能体|AI.*Agent/ => Agent
   # 英文
-  /AI agent|AI assistant|AI coding|Copilot|AI tool|AI startup/ => AI Apps
+  /AI agent|AI assistant|AI coding|AI tool|AI startup/ => AI Apps
   /AI funding|AI valuation|AI unicorn/ => AI Investment
-  /RAG|fine-tuning|prompt engineering|embedding|vector/ => AI Dev
+  /\bRAG\b|fine-tuning|prompt engineering|embedding|vector database/ => AI Dev
   @10
+  # ⬆️ 改动：
+  # - 移除 Copilot（太宽泛，微软 Copilot 可能是 Office 新闻）
+  # - 移除 Agent（太宽泛，"ICE agent" 误匹配）→ 改为 AI.*Agent 或 智能体
+  # - vector → vector database（避免数学论文误匹配）
 
   # ═══════════════════════════════════════════════════════════════
   # Layer D — 科技产业
@@ -293,27 +233,39 @@
 
   [机器人-具身智能]
   # 中文
-  /机器人|人形机器人|具身智能/ => 机器人
+  /人形机器人|具身智能|仿生机器人/ => 机器人
   /波士顿动力|特斯拉机器人|宇树|优必选/ => 公司
   /灵巧手|关节|伺服|减速器/ => 硬件
   # 英文
-  /robot|robotics|humanoid|embodied AI|autonomous/ => Robotics
+  /humanoid robot|embodied AI/ => Robotics
   /Boston Dynamics|Figure AI|Agility|Unitree|Optimus/ => Companies
-  /actuator|gripper|SLAM|reinforcement learning|sim2real/ => Tech
+  /actuator|gripper|SLAM|sim2real/ => Tech
   @10
+  # ⬆️ 改动：
+  # - 机器人 → 人形机器人|具身智能|仿生机器人（"机器人"太宽泛，扫地机器人也匹配）
+  # - 移除宽泛的 robot|robotics|autonomous（Mars rover 也匹配 autonomous）
+  # - 移除 reinforcement learning（学术概念，不应归入机器人产业）
 
   [芯片-半导体]
   # 中文
   /芯片|半导体|晶圆|制程|光刻机|EUV/ => 芯片
-  /台积电|三星|英特尔|中芯|华为海思/ => 厂商
-  /英伟达|AMD|高通|联发科/ => 设计
-  /禁令|出口管制|制裁|国产替代/ => 产业链
+  /台积电|英特尔|中芯|华为海思/ => 厂商
+  /英伟达|黄仁勋|AMD|高通|联发科/ => 设计
+  /出口管制|芯片.*禁令|国产替代/ => 产业链
   # 英文
-  /semiconductor|chip|wafer|lithography|EUV|fab/ => Semiconductor
-  /TSMC|Samsung|Intel|SMIC|GlobalFoundries/ => Foundry
-  /NVIDIA|AMD|Qualcomm|ARM|chip design/ => Design
+  /semiconductor|wafer|lithography|EUV|fab/ => Semiconductor
+  /TSMC|Intel|SMIC|GlobalFoundries/ => Foundry
+  /NVIDIA|Jensen Huang|AMD|Qualcomm|ARM|chip design/ => Design
   /chip ban|export control|CHIPS Act/ => Policy
   @10
+  # ⬆️ 改动：
+  # - 黄仁勋/Jensen Huang 从 AI 移到这里（更准确的归属）
+  # - 移除 三星|Samsung（太宽泛，三星手机新闻也匹配）
+  # - chip → 不动（精度可接受）
+  # - 禁令 → 芯片.*禁令（避免其他禁令误匹配）
+  !三星手机
+  !Galaxy
+  !折叠屏
 
   [苹果-Apple]
   # 中文
@@ -336,18 +288,21 @@
 
   [特斯拉-Tesla]
   # 中文
-  /特斯拉|马斯克/ => 特斯拉
+  /特斯拉/ => 特斯拉
   /特斯拉自动驾驶|FSD|特斯拉Robotaxi|Tesla自动驾驶/ => 自动驾驶
   /特斯拉降价|特斯拉涨价|特斯拉销量|特斯拉交付|特斯拉工厂/ => 业务
   /特斯拉召回|特斯拉事故|特斯拉起火/ => 安全
   # 英文
-  /\bTesla\b|Elon Musk|Cybertruck/ => Tesla
-  /FSD|Full Self-Driving|Autopilot|Robotaxi|autonomous driving/ => Autonomy
+  /\bTesla\b|Cybertruck/ => Tesla
+  /FSD|Full Self-Driving|Autopilot|Robotaxi/ => Autonomy
   /Tesla delivery|Tesla sales|Gigafactory|Tesla earnings/ => Business
   /Tesla recall|NHTSA/ => Safety
   @8
   !模特
   !Model走秀
+  # ⬆️ 改动：
+  # - 移除 马斯克|Elon Musk（马斯克新闻太多且大多不是特斯拉相关，SpaceX/xAI/政治都有）
+  # - 移除 autonomous driving（太宽泛，百度/Waymo 也匹配）
 
   [航天-Space]
   # 中文
@@ -356,12 +311,15 @@
   /神舟|天宫|嫦娥|长征火箭|中国航天/ => 中国航天
   # 英文
   /SpaceX|Starship|Falcon 9|Falcon Heavy|rocket launch/ => SpaceX
-  /NASA|Artemis|SLS|Moon|Mars|lunar/ => NASA
-  /Blue Origin|Rocket Lab|satellite|orbit|ISS|space station/ => Space
+  /NASA|Artemis|SLS|lunar/ => NASA
+  /Blue Origin|Rocket Lab/ => Space
   @8
   !航天股
   !航天板块
   !商业航天调整
+  # ⬆️ 改动：
+  # - 移除 satellite|orbit|ISS|space station（太宽泛）
+  # - 移除 Moon|Mars（太宽泛，"Mars rover" 不一定是航天新闻）
 
   # ═══════════════════════════════════════════════════════════════
   # Layer E — Quant & 工具
@@ -399,16 +357,15 @@
   /Python|Rust|Go语言|TypeScript|开源项目|GitHub/ => 编程
   /PostgreSQL|Redis|向量数据库|数据库/ => 数据
   # 英文
-  /Python|Rust|Go|TypeScript|JavaScript|open source/ => Programming
-  /PostgreSQL|Redis|SQLite|DuckDB|vector database|database/ => Database
-  /API|SDK|framework|library|developer|programming/ => Dev
+  /Python|Rust|\bGo\b|TypeScript|JavaScript|open source/ => Programming
+  /PostgreSQL|Redis|SQLite|DuckDB|vector database/ => Database
+  /\bAPI\b|\bSDK\b|framework|developer tool|programming/ => Dev
   @8
   !hiring
   !is hiring
   !招聘
-
-
-
-
-
-
+  # ⬆️ 改动：
+  # - Go → \bGo\b（避免匹配 "go to" 等）
+  # - 移除 library（太宽泛）
+  # - API → \bAPI\b（精确匹配）
+  # - developer → developer tool（避免 "game developer" 等）
