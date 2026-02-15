@@ -201,9 +201,9 @@
   /奥特曼/ => 关键人物
   /AI监管|AI安全|AI伦理|deepfake/ => 治理
   # 英文
-  /OpenAI|GPT-4|GPT-5|ChatGPT|Claude|Anthropic|Gemini|DeepSeek|Mistral|Llama/ => LLM
+  /OpenAI|GPT-4|GPT-5|ChatGPT|Claude|Anthropic|Gemini|DeepSeek|Mistral|Llama|xAI|Grok/ => LLM
   /\bLLM\b|large language model|foundation model|generative AI|AGI|ASI/ => AI Tech
-  /Sam Altman|Dario Amodei|Demis Hassabis/ => AI Leaders
+  /Sam Altman|Dario Amodei|Demis Hassabis|黄仁勋.*AI|Jensen.*AI/ => AI Leaders
   /AI infrastructure|AI.*训练|AI.*推理/ => AI Infra
   /AI regulation|AI safety|alignment|hallucination|AI ethics/ => AI Governance
   @15
@@ -218,9 +218,9 @@
   /AI融资|AI估值|AI创业/ => 投资
   /智能体|AI.*Agent/ => Agent
   # 英文
-  /AI agent|AI assistant|AI coding|AI tool|AI startup/ => AI Apps
+  /AI agent|AI assistant|AI coding|AI tool|AI startup|Perplexity|Cursor AI/ => AI Apps
   /AI funding|AI valuation|AI unicorn/ => AI Investment
-  /\bRAG\b|fine-tuning|prompt engineering|embedding|vector database/ => AI Dev
+  /\bRAG\b|fine-tuning|prompt engineering|embedding|vector database|MCP|model context protocol/ => AI Dev
   @10
   # ⬆️ 改动：
   # - 移除 Copilot（太宽泛，微软 Copilot 可能是 Office 新闻）

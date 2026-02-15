@@ -38,7 +38,7 @@ app:
 # ===============================================================
 schedule:
   enabled: true                         # 是否启用调度系统
-  preset: "morning_evening"             # 预设模板名称（见上方说明）
+  preset: "custom"                       # 自定义：白天静默采集，晚间一次性推送
 
 
 # ===============================================================
@@ -190,9 +190,9 @@ rss:
 
     - id: "reuters-world"
       name: "Reuters World News"
-      # ✨ 突发新闻速度最快的通讯社之一
       url: "http://feeds.reuters.com/Reuters/worldNews"
       max_age_days: 1
+      enabled: false                  # BROKEN: Reuters 已停用 RSS
 
     - id: "project-syndicate"
       name: "Project Syndicate"
@@ -203,9 +203,9 @@ rss:
     # ━━━ 4. Quant 业界动态 (Career) ━━━
     - id: "quantocracy"
       name: "Quantocracy"
-      # ✨ Quant 圈最好的聚合源：不仅有代码，还有策略回测讨论
       url: "https://quantocracy.com/feed/"
       max_age_days: 1
+      enabled: false                  # BROKEN: HTTP 400
       # ━━━ 5. 观点与管理 (Perspective) ━━━
     - id: "hbr"
       name: "Harvard Business Review"
@@ -215,12 +215,14 @@ rss:
     - id: "mitsmr"
       name: "MIT Sloan Management Review"
       url: "http://feeds.feedburner.com/mitsmr"
-      max_age_days: 7   # 低频且质量高，窗口可以更长
+      max_age_days: 7
+      enabled: false                  # BROKEN: FeedBurner 已停用
   
     - id: "mit-sloan-news"
       name: "MIT News (Sloan School of Management)"
       url: "https://news.mit.edu/rss/topic/mit-sloan-school-management"
       max_age_days: 7
+      enabled: false                  # BROKEN: HTTP 404
 
       
     # 自定义源示例
