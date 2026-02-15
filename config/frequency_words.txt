@@ -345,7 +345,7 @@
   /Obsidian|Notion|Logseq|笔记软件|知识管理|PKM|第二大脑/ => 工具
   /Zotero|文献管理|论文管理/ => 学术
   # 英文
-  /Obsidian|Notion|Logseq|Roam|note-taking|PKM|second brain/ => Tools
+  /\bObsidian\b|\bNotion\b|\bLogseq\b|\bRoam\b|note-taking|\bPKM\b|second brain/ => Tools
   /Zotero|Readwise|\bAnki\b|spaced repetition/ => Learning
   /\bPARA\b|Zettelkasten|evergreen notes|knowledge graph/ => Methods
   @5
