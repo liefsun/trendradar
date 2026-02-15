@@ -137,6 +137,16 @@
   # ⬆️ 把 暴跌|暴涨|崩盘 从 Crypto 移到这里
   # 因为这些词绝大多数时候指的是传统金融资产，不是 crypto
 
+  [监管-金融执法]
+  # 证券诉讼 & 执法（服务经济咨询 Securities + Crypto 监管）
+  /SEC.*enforcement|SEC.*charge|SEC.*settle|securities litigation|securities fraud/ => SEC
+  /class action.*securities|shareholder lawsuit|expert witness/ => Litigation
+  /crypto.*enforcement|crypto.*charge|crypto.*fine|DOJ.*crypto/ => Crypto执法
+  /FCA.*fine|FCA.*enforcement|FCA.*ban|PRA.*enforcement/ => UK执法
+  @8
+  !video enforcement
+  !law enforcement officer
+
   # ═══════════════════════════════════════════════════════════════
   # Layer B — Crypto（大幅收紧，只匹配真正的 crypto 内容）
   # ═══════════════════════════════════════════════════════════════
@@ -335,6 +345,7 @@
   /high frequency|HFT|market making|arbitrage|alpha/ => Trading
   /factor investing|momentum|mean reversion|stat arb|backtest/ => Strategy
   /risk management|Sharpe|drawdown|VaR|portfolio/ => Risk
+  /Basel 3\.1|Basel III|\bFRTB\b|\bISDA\b|\bCVA\b|capital requirements|model validation/ => Regulation
   /stochastic|volatil|option pricing|time series|GARCH|copula|Ricci|regression model/ => Academic
   @10
   !高盛策略师
@@ -369,3 +380,16 @@
   # - 移除 library（太宽泛）
   # - API → \bAPI\b（精确匹配）
   # - developer → developer tool（避免 "game developer" 等）
+
+  # ═══════════════════════════════════════════════════════════════
+  # Layer F — 求职目标（目标公司 & 行业信号）
+  # ═══════════════════════════════════════════════════════════════
+
+  [求职-目标公司]
+  # 主攻线1：Crypto Quant T2/T3
+  /Galaxy Digital|Chainalysis|Wintermute|GSR Markets|\bGSR\b.*crypto/ => Crypto Firm
+  # 主攻线2：经济咨询 Securities
+  /AlixPartners|NERA Economic|\bFTI\b.*consult|Fideres|Oxera/ => Econ Consulting
+  # 主攻线3：银行 Quant Risk（只匹配 quant/risk 语境，避免普通银行新闻）
+  /Barclays.*quant|Goldman.*quant|HSBC.*risk|StanChart.*risk/ => Bank QR
+  @5

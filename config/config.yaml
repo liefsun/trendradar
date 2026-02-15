@@ -80,19 +80,11 @@ platforms:
     # - id: "sputniknewscn"
     #   name: "卫星通讯社"  # 可选：立场源，想看再留
 
-    # ━━━ 4. 大众情绪与兜底 (Mass Sentiment) ━━━
-    - id: "weibo"
-      name: "微博"
-    - id: "baidu"
-      name: "百度热搜"
-    - id: "bilibili-hot-search"
-      name: "B站热搜"
+    # ━━━ 4. 大众情绪（精简版） ━━━
     - id: "zhihu"
       name: "知乎"
     - id: "toutiao"
-      name: "今日头条"   
-    - id: "douyin"
-      name: "抖音"
+      name: "今日头条"
 
   
 
@@ -169,7 +161,7 @@ rss:
       enabled: false                  # 噪音较大，有 Coin Metrics + The Defiant 替代
 
 
-    # ━━━ 3. 英国宏观与央行 (Macro) ━━━
+    # ━━━ 3. 宏观与监管 (Macro & Regulation) ━━━
     - id: "bank-of-england"
       name: "Bank of England"
       # ✨ 英国央行官方源：直接看一手政策，别看 BBC 的二手解读
@@ -187,6 +179,34 @@ rss:
       # ✨ 美联储一手政策发布，比财联社转述快
       url: "https://www.federalreserve.gov/feeds/press_all.xml"
       max_age_days: 7
+
+    - id: "sec-press"
+      name: "SEC Press Releases"
+      # ✨ SEC 执法公告：证券诉讼核心素材，经济咨询面试谈资
+      # 频率：~3篇/周，中频
+      url: "https://www.sec.gov/news/pressreleases.rss"
+      max_age_days: 5
+
+    - id: "fca-news"
+      name: "FCA News"
+      # ✨ UK 金融行为监管局：enforcement + policy，银行 QR + 辅攻线
+      # 频率：~10篇/周，中高频
+      url: "https://www.fca.org.uk/news/rss.xml"
+      max_age_days: 3
+
+    - id: "eba"
+      name: "European Banking Authority"
+      # ✨ Basel 3.1 实施、CRR/CRD 更新，银行 Quant Risk 核心
+      # 频率：~4篇/周，中频
+      url: "https://www.eba.europa.eu/rss.xml"
+      max_age_days: 7
+
+    - id: "bis-speeches"
+      name: "BIS — Central Bankers' Speeches"
+      # ✨ 央行家演讲：预示未来 6-12 个月监管方向
+      # 频率：不规则，集中发布（一天10+篇），保持长窗口避免错过整批
+      url: "https://www.bis.org/doclist/cbspeeches.rss"
+      max_age_days: 14
 
     - id: "reuters-world"
       name: "Reuters World News"
