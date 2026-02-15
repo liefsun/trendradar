@@ -404,9 +404,9 @@ custom:
 
   periods:
     evening_summary:
-      name: "晚间汇总"
-      start: "19:00"
-      end: "21:00"
+      name: "傍晚汇总"
+      start: "17:00"
+      end: "20:00"
       analyze: true                # AI 全天汇总分析
       ai_mode: "daily"
       push: true                   # 推送全天汇总
