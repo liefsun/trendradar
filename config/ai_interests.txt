@@ -11,16 +11,17 @@
 # 如果一条新闻同时可能匹配多个方向，请优先归入更靠前的方向。
 
 1. 加密货币与 DeFi：重点关注 Bitcoin 价格与波动率、Ethereum 生态、稳定币监管（MiCA、Tether）、DeFi 安全与漏洞、链上数据分析、机构入场（BlackRock ETF、Grayscale）、交易所动态（Binance、Coinbase）。这是我的核心研究和求职方向。
-2. 量化金融与风险管理：关注量化交易策略（统计套利、因子投资、动量）、波动率建模（GARCH、regime-switching）、VaR 与压力测试、Basel 3.1/FRTB 资本要求、模型验证、对冲基金动态（Citadel、Two Sigma、Wintermute、GSR）。
+2. 量化金融与风险管理：关注量化交易策略（统计套利、因子投资、动量）、波动率建模（GARCH、regime-switching）、VaR 与压力测试、Basel 3.1/FRTB 资本要求、模型验证、对冲基金动态（Citadel、Two Sigma）。也关注目标公司动态：Crypto Quant（Galaxy Digital、Wintermute、GSR Markets、Chainalysis）、经济咨询（AlixPartners、NERA、FTI Consulting、Fideres、Oxera）、银行 Quant Risk（Barclays、Goldman Sachs、HSBC）。
 3. 金融监管与执法：关注 SEC 执法（证券欺诈、内幕交易、settlement）、FCA/PRA 执法与政策、EBA 银行监管（CRR/CRD）、BIS 央行家演讲、反洗钱（AML）、证券诉讼（class action、expert witness）。对经济咨询求职直接相关。
 4. 央行政策与宏观经济：关注美联储利率路径（Powell、FOMC）、英国央行（BoE）货币政策、欧央行（ECB）决议、通胀/CPI/PMI/GDP 数据、就业市场、全球流动性变化、汇率波动（GBP、DXY）、美债收益率。
 5. AI 与大模型：关注 OpenAI、Claude/Anthropic、DeepSeek、Gemini、Mistral、xAI 等模型的能力演进与开源策略，AI Agent/工具链（MCP、RAG、embedding），AI 在金融领域的应用（量化、风控、合规），AI 安全与治理。
-6. 地缘政治与国际关系：重点关注中美欧关税/制裁/科技脱钩、俄乌与中东冲突、英国脱欧后政策、贸易战对金融市场和供应链的传导效应。关注对资产价格和求职市场的间接影响。
-7. 中国科技与互联网：关注华为（海思、昇腾、鸿蒙）、腾讯、字节跳动、DeepSeek 等公司的战略调整、产品节奏、资本动作与监管影响。作为中文热榜的主要内容源。
+6. 地缘政治与国际关系：重点关注中美欧关税/制裁/科技脱钩、俄乌与中东冲突、英国政治与政策动态（议会、首相、英镑）、美国政府与国会动态、欧盟政策。关注贸易战对金融市场和供应链的传导效应。
+7. 中国科技与政策：关注华为（海思、昇腾、鸿蒙）、腾讯、字节跳动等公司的战略调整与资本动作；也关注中国政策面：国务院/发改委/财政部/工信部/网信办的重大决策、房地产与地方债、反垄断与数据安全监管。作为中文热榜的主要内容源。
 8. 芯片与半导体：关注英伟达/AMD GPU 算力、台积电先进制程、光刻机与 EUV、出口管制与国产替代、AI 算力供给与推理成本。
 9. 编程与开发工具：关注 Python 生态（pandas、scikit-learn）、Rust、开源项目、数据库（PostgreSQL、DuckDB、SQLite）、AI 编程工具（Cursor、Copilot）、PKM 工具（Obsidian、Anki）。
 10. 航天与前沿科学：关注 SpaceX（Starship）、NASA、中国航天、量子计算、脑机接口等前沿方向的重要突破。作为背景兴趣，不高于上述核心方向。
-11. 机器人与具身智能：关注人形机器人（Figure AI、宇树、Optimus）、具身智能、自动驾驶（FSD、Waymo）的技术进展与产业化。
+11. 消费科技巨头：关注苹果（iPhone、WWDC、Vision Pro、Apple Silicon）、特斯拉（FSD 自动驾驶、Robotaxi、销量与产能）的产品发布与战略变化。
+12. 机器人与具身智能：关注人形机器人（Figure AI、宇树、Optimus）、具身智能的技术进展与产业化。
 
 # 标题质量要求（即使匹配了上面的标签，符合以下特征的标题也请跳过）
 - 不要标题党/震惊体（如"震惊！"、"太可怕了！"、"竟然..."、"刚刚！"）
