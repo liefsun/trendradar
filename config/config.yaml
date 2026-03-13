@@ -114,7 +114,7 @@ rss:
   #    - 只有新鲜的文章会被推送到通知渠道
   freshness_filter:
     enabled: true                     # 是否启用新鲜度过滤（默认启用）
-    max_age_days: 2                   # 最大文章年龄（天）
+    max_age_days: 7                   # 最大文章年龄（天）
                                       # - 正整数：只推送 N 天内的文章
                                       # - 0：禁用过滤，推送所有文章
 
@@ -199,6 +199,12 @@ rss:
       # ✨ Basel 3.1 实施、CRR/CRD 更新，银行 Quant Risk 核心
       # 频率：~4篇/周，中频
       url: "https://www.eba.europa.eu/rss.xml"
+      max_age_days: 7
+
+    - id: "ecb-press"
+      name: "European Central Bank"
+      # ✨ 欧央行政策决议、利率路径、金融稳定报告
+      url: "https://www.ecb.europa.eu/rss/press.html"
       max_age_days: 7
 
     - id: "bis-speeches"
@@ -603,19 +609,14 @@ ai_analysis:
 # 模型配置见上方 ai 配置段
 # ===============================================================
 ai_translation:
-  enabled: true                     # 是否启用翻译功能
+  enabled: false                    # 不需要翻译（中英文直接看）
 
-  # 翻译目标语言
   language: "中文"
-
-  # 提示词配置文件路径（相对于 config 目录）
   prompt_file: "ai_translation_prompt.txt"
-
-  # 翻译范围
   scope:
-    hotlist: false                  # 热榜区域
-    rss: true                      # RSS 区域
-    standalone: true               # 独立展示区
+    hotlist: false
+    rss: true
+    standalone: true
 
 
 # ===============================================================
